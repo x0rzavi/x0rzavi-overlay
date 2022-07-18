@@ -1,0 +1,11 @@
+--- Makefile	2022-07-16 22:39:15.136379677 +0530
++++ Makefile	2022-07-16 23:56:49.417867435 +0530
+@@ -10,7 +10,7 @@
+ else
+ 	CPPFLAGS = -DNDEBUG
+ 	CFLAGS   = -Os
+-	LDFLAGS  = -s
++	#LDFLAGS  = -s
+ endif
+ 
+ EC_MODULE = 

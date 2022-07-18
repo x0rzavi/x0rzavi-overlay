@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Avishek Sen</name>
+		<email>x0rzavi@github.com</email>
+	</maintainer>
+	<longdescription lang="en">
+		NoteBook FanControl ported to Linux
+	</longdescription>
+	<use>
+		<flag name="systemd">Enable systemd unit file installation</flag>
+		<flag name="zsh-completion">Enable zsh-completion support</flag>
+		<flag name="bash-completion">Enable bash-completion support</flag>
+		<flag name="fish-completion">Enable fish-completion support</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nbfc-linux/nbfc-linux</remote-id>
+	</upstream>
+</pkgmetadata>
