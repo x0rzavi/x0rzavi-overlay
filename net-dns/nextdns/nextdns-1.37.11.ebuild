@@ -10,7 +10,7 @@ HOMEPAGE="https://${PN}.io"
 
 LICENSE="MIT"
 SLOT="0"
-IUSE="systemd +pie"
+IUSE="+pie"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -40,6 +40,5 @@ src_compile () {
 
 src_install() {
 	einstalldocs
-	#use systemd && systemd_dounit "${FILESDIR}/${PN}.service"
 	dobin ${PN}
 }
