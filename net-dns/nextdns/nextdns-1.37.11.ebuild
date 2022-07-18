@@ -6,7 +6,7 @@ EAPI=8
 inherit go-module systemd
 
 DESCRIPTION="NextDNS CLI client (DoH Proxy)"
-HOMEPAGE="${PN}.io"
+HOMEPAGE="https://${PN}.io"
 
 LICENSE="MIT"
 SLOT="0"
@@ -25,8 +25,21 @@ SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 
 src_compile () {
 	if use pie ; then
-		ego build --buildmode=pie -trimpath -ldflags "-X main.version=${PV}" -o ${PN} .
+		ego build \
+		--buildmode=pie \
+		-trimpath \
+		-ldflags "-X main.version=${PV}" \
+		-o ${PN} .
 	else
-		ego build -trimpath	-ldflags "-X main.version=${PV}" -o ${PN} .
+		ego build \
+		-trimpath	\
+		-ldflags "-X main.version=${PV}" \
+		-o ${PN} .
 	fi
+}
+
+src_install() {
+	einstalldocs
+	#use systemd && systemd_dounit "${FILESDIR}/${PN}.service"
+	dobin ${PN}
 }
