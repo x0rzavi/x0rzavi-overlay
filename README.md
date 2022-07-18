@@ -10,3 +10,4 @@ Personal gentoo overlay for my absolutely necessary things :P
 2. sys-power/nbfc-linux
 3. sys-kernel/zenpower3
 4. sys-fs/sanoid
+5. net-dns/nextdns
