@@ -6,7 +6,7 @@ EAPI=8
 inherit go-module systemd
 
 DESCRIPTION="NextDNS CLI client (DoH Proxy)"
-HOMEPAGE="https://${PN}.io"
+HOMEPAGE="https://nextdns.io"
 
 LICENSE="MIT"
 SLOT="0"
