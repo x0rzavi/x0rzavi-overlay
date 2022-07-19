@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Avishek Sen</name>
+		<email>x0rzavi@github.com</email>
+	</maintainer>
+	<longdescription lang="en">
+		Command-line DNS Client for Humans. Written in Golang.
+	</longdescription>
+	<upstream>
+		<remote-id type="github">mr-karan/doggo</remote-id>
+	</upstream>
+</pkgmetadata>
