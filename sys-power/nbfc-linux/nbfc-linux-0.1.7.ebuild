@@ -21,7 +21,7 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="systemd zsh-completion bash-completion fish-completion"
+IUSE="zsh-completion bash-completion fish-completion"
 
 RDEPEND="sys-apps/dmidecode"
 DEPEND="${RDEPEND}"
@@ -36,18 +36,14 @@ WARNING_HWMON="No hardware monitoring support detected!
 			   nbfc-linux can not function without temperature
 			   monitoring"
 
-src_prepare() {
-	eapply -p0 "${FILESDIR}/${PN}-9999-dont-strip.patch"
-	use systemd || eapply -p0 "${FILESDIR}/${PN}-9999-no-systemd-service.patch"
-	eapply_user
-}
+PATCHES="${FILESDIR}/${PN}-9999-Makefile-Dont-strip.patch"
 
 src_compile() {
-	emake PREFIX=/usr confdir=/etc DESTDIR="${D}"
+	emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}"
 }
 
 src_install() {
-	emake PREFIX=/usr confdir=/etc DESTDIR="${D}" install
+	emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install
 	if ! use zsh-completion ; then
 		rm -rf ${D}/usr/share/zsh || die "Removing unnecessary completions failed!"
 	fi
@@ -65,9 +61,7 @@ pkg_postinst() {
 	elog "nbfc-linux requires to monitor temperature sensors."
 	elog "Ensure that there is proper support."
 	elog " "
-	if use systemd ; then
-		elog "If you wish nbfc_service to get started on boot, use sudo systemctl enable nbfc_service"
-	else
-		elog "If you wish nbfc_service to get started on boot, use sudo rc-update add nbfc_service default"
-	fi
+	elog "If you wish nbfc_service to get started on boot," 
+	elog "use 'sudo systemctl enable nbfc_service' for systemd or"
+	elog "use 'sudo rc-update add nbfc_service default' for openrc"
 }
