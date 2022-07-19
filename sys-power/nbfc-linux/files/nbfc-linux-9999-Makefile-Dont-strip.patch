@@ -1,0 +1,25 @@
+From 3476d13c7cccd36501a24d75a5a752783282733a Mon Sep 17 00:00:00 2001
+From: Avishek Sen <x0rzavi@gmail.com>
+Date: Tue, 19 Jul 2022 11:34:20 +0530
+Subject: [PATCH] Makefile: Dont strip
+
+---
+ Makefile | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makefile b/Makefile
+index 94a5695..07f261e 100644
+--- a/Makefile
++++ b/Makefile
+@@ -10,7 +10,7 @@ ifeq ($(BUILD), debug)
+ else
+ 	CPPFLAGS = -DNDEBUG
+ 	CFLAGS   = -Os
+-	LDFLAGS  = -s
++	#LDFLAGS  = -s
+ endif
+ 
+ EC_MODULE = 
+-- 
+2.35.1
+
