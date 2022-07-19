@@ -1,14 +1,15 @@
 # x0rzavi-overlay
-Personal gentoo overlay for my absolutely necessary things :P
+Gentoo overlay for my absolutely necessary things :P
 
-## To add the repo to your gentoo system
+## Add repository
 1. ```eselect repository add x0rzavi git https://github.com/x0rzavi/x0rzavi-overlay.git```
 2. ```emaint sync -r x0rzavi```
 
-## Packages
-1. gui-wm/hyprland
-2. sys-power/nbfc-linux
-3. sys-kernel/zenpower3
-4. sys-fs/sanoid
-5. net-dns/nextdns
-6. gui-apps/cliphist
+## Package list
+- [gui-apps/cliphist](https://github.com/sentriz/cliphist)
+- [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
+- [net-dns/doggo](https://github.com/mr-karan/doggo)
+- [net-dns/nextdns](https://github.com/nextdns/nextdns)
+- [sys-fs/sanoid](https://github.com/jimsalterjrs/sanoid)
+- [sys-kernel/zenpower3](https://git.exozy.me/Ta180m/zenpower3)
+- [sys-power/nbfc-linux](https://github.com/nbfc-linux/nbfc-linux)
