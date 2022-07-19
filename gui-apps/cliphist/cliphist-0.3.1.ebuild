@@ -17,9 +17,7 @@ RESTRICT="mirror"
 RDEPEND="gui-apps/wl-clipboard
 		x11-misc/xdg-utils"
 DEPEND="${RDEPEND}"
-BDEPEND="dev-lang/go
-		 dev-vcs/git
-		 virtual/pkgconfig"
+BDEPEND="virtual/pkgconfig"
 
 SRC_URI="https://github.com/sentriz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		https://github.com/x0rzavi/x0rzavi-overlay/raw/main/${CATEGORY}/${PN}/files/${P}-deps.tar.xz"
@@ -30,12 +28,12 @@ src_compile () {
 		ego build \
 		--buildmode=pie \
 		-trimpath \
-		-ldflags "-X main.version=${PV}" \
+		-ldflags "-s -w -X main.version=${PV}" \
 		-o ${PN} .
 	else
 		ego build \
 		-trimpath	\
-		-ldflags "-X main.version=${PV}" \
+		-ldflags "-s -w -X main.version=${PV}" \
 		-o ${PN} .
 	fi
 }
