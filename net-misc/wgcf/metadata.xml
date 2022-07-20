@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Avishek Sen</name>
+		<email>x0rzavi@github.com</email>
+	</maintainer>
+	<longdescription lang="en">
+		Cross-platform, unofficial CLI for Cloudflare Warp
+	</longdescription>
+	<upstream>
+		<remote-id type="github">ViRb3/wgcf</remote-id>
+	</upstream>
+</pkgmetadata>

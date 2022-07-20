@@ -10,6 +10,7 @@ Gentoo overlay for my absolutely necessary things :P
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
 - [net-dns/doggo](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
+- [net-misc/wgcf](https://github.com/ViRb3/wgcf)
 - [sys-fs/sanoid](https://github.com/jimsalterjrs/sanoid)
 - [sys-kernel/zenpower3](https://git.exozy.me/Ta180m/zenpower3)
 - [sys-power/nbfc-linux](https://github.com/nbfc-linux/nbfc-linux)
