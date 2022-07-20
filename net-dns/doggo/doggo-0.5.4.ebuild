@@ -19,20 +19,29 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 SRC_URI="https://github.com/mr-karan/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
-		https://github.com/x0rzavi/x0rzavi-overlay/raw/main/${CATEGORY}/${PN}/files/${P}-deps.tar.xz"
+		 https://github.com/x0rzavi/x0rzavi-overlay/raw/main/${CATEGORY}/${PN}/files/${P}-deps.tar.xz"
 
 src_compile () {
-	BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+	export CGO_CFLAGS="${CFLAGS}"
+	export CGO_CPPFLAGS="${CXXFLAGS}"
+	export CGO_CXXFLAGS="${CXXFLAGS}"
+	export CGO_LDFLAGS="${LDFLAGS}"
+	export BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
+	
 	if use pie ; then
 		ego build \
 		--buildmode=pie \
 		-trimpath \
-		-ldflags "-s -w -X main.buildVersion=${PV} -X 'main.buildDate=${BUILD_DATE}'" \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-s -w -linkmode external -X main.buildVersion=${PV} -X 'main.buildDate=${BUILD_DATE}'" \
 		-o ${PN} ${S}/cmd/doggo
 	else
 		ego build \
-		-trimpath	\
-		-ldflags "-s -w -X main.buildVersion=${PV} -X main.buildDate=${BUILD_DATE}" \
+		-trimpath \
+		-mod=readonly \
+		-modcacherw \
+		-ldflags "-s -w -linkmode external -X main.buildVersion=${PV} -X main.buildDate=${BUILD_DATE}" \
 		-o ${PN} ${S}/cmd/doggo
 	fi
 }
