@@ -6,6 +6,7 @@ Gentoo overlay for my absolutely necessary things :P
 2. ```emaint sync -r x0rzavi```
 
 ## Maintained Packages
+- [app-containers/distrobox](https://github.com/89luca89/distrobox)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
 - [net-dns/doggo](https://github.com/mr-karan/doggo)
