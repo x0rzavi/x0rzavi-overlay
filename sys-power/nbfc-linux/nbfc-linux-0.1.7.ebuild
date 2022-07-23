@@ -43,7 +43,7 @@ src_compile() {
 }
 
 src_install() {
-	emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install
+	emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install-c
 	if ! use zsh-completion ; then
 		rm -rf ${D}/usr/share/zsh || die "Removing unnecessary completions failed!"
 	fi
