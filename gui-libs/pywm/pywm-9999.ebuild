@@ -3,8 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit python-single-r1
+DISTUTILS_USE_PEP517=setuptools
+#DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_10 )
+inherit distutils-r1
 
 DESCRIPTION="Wayland compositor core employing wlroots - aims to handle the actual layout logic in python."
 HOMEPAGE="https://github.com/jbuchermn/pywm"
@@ -19,26 +21,16 @@ else
 	KEYWORDS="~amd64"
 fi
 
-LICENSE="MIT"
+#LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RDEPEND="${PYTHON_DEPS}
+RDEPEND="dev-lang/python
 		gui-libs/wlroots
 		dev-python/imageio
 		dev-python/numpy
 		dev-python/pycairo
 		dev-python/python-evdev"
 DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}"
-
-src_compile () {
-	"${EPYTHON}" setup.py build
-}
-
-src_install () {
-	"${EPYTHON}" setup.py install --root="${D}" --optimize=1
-	python_optimize
-	einstalldocs
-}
+BDEPEND="${RDEPEND}
+		virtual/pkgconfig"

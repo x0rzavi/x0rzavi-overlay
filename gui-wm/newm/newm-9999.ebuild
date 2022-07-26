@@ -3,8 +3,10 @@
 
 EAPI=8
 
-PYTHON_COMPAT=( python3_{8..10} )
-inherit python-single-r1
+DISTUTILS_USE_PEP517=setuptools
+#DISTUTILS_SINGLE_IMPL=1
+PYTHON_COMPAT=( python3_10 )
+inherit distutils-r1
 
 DESCRIPTION="A Wayland compositor written with laptops and touchpads in mind."
 HOMEPAGE="https://github.com/jbuchermn/newm"
@@ -23,27 +25,19 @@ LICENSE="MIT"
 SLOT="0"
 IUSE=""
 
-REQUIRED_USE="${PYTHON_REQUIRED_USE}"
-RDEPEND="${PYTHON_DEPS}
-		gui-libs/pywm
+RDEPEND="gui-libs/pywm
 		dev-python/pycairo
 		dev-python/psutil
 		dev-python/python-pam
-		dev-python/pyfiglet[python_targets_python3_9]
+		dev-python/pyfiglet
 		dev-python/dasbus
 		dev-python/fuzzywuzzy"
 DEPEND="${RDEPEND}"
-BDEPEND="${RDEPEND}"
+BDEPEND="${RDEPEND}
+		virtual/pkgconfig"
 
-src_compile () {
-	"${EPYTHON}" setup.py build
-}
-
-src_install () {
-	"${EPYTHON}" setup.py install --root="${D}" --optimize=1
-	python_optimize
-	
-	einstalldocs
+python_install_all () {
 	insinto /usr/share/wayland-sessions
 	doins ${S}/newm/resources/newm.desktop
+	distutils-r1_python_install_all
 }
