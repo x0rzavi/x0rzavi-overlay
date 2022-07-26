@@ -31,7 +31,7 @@ RDEPEND="gui-libs/pywm
 		dev-python/python-pam
 		dev-python/pyfiglet
 		dev-python/dasbus
-		dev-python/fuzzywuzzy"
+		dev-python/thefuzz"
 DEPEND="${RDEPEND}"
 BDEPEND="${RDEPEND}
 		virtual/pkgconfig"
