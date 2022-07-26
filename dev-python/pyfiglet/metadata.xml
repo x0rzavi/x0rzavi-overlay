@@ -2,8 +2,8 @@
 <!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
     <maintainer type="person">
-        <email>coppens.matthias.abc@gmail.com</email>
-        <name>Matthias Coppens</name>
+        <email>x0rzavi@github.com</email>
+        <name>Avishek Sen</name>
     </maintainer>
     <upstream>
         <remote-id type="github">pwaller/pyfiglet</remote-id>
