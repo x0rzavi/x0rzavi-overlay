@@ -7,6 +7,7 @@ Gentoo overlay for my absolutely necessary things :P
 
 ## Maintained Packages
 - [app-containers/distrobox](https://github.com/89luca89/distrobox)
+- [dev-python/thefuzz](https://github.com/seatgeek/thefuzz)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
 - [net-dns/doggo](https://github.com/mr-karan/doggo)

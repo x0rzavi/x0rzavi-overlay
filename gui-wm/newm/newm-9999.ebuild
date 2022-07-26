@@ -39,5 +39,6 @@ BDEPEND="${RDEPEND}
 python_install_all () {
 	insinto /usr/share/wayland-sessions
 	doins ${S}/newm/resources/newm.desktop
+	python_doscript ${S}/bin/.start-newm
 	distutils-r1_python_install_all
 }
