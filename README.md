@@ -18,3 +18,7 @@ Gentoo overlay for my absolutely necessary things :P
 
 ## Proxy Maintained Packages
 - [dev-libs/bemenu](https://github.com/Cloudef/bemenu)
+
+## WIP/Hacky Packages
+- [gui-libs/pywm](https://github.com/jbuchermn/pywm)
+- [gui-wm/newm](https://github.com/jbuchermn/newm)
