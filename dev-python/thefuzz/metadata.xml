@@ -2,12 +2,12 @@
 <!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
 <pkgmetadata>
 	<maintainer type="project">
-		<email>python@gentoo.org</email>
-		<name>Python</name>
+		<email>x0rzavi@github.com</email>
+		<name>Avishek Sen</name>
 	</maintainer>
 	<stabilize-allarches/>
 	<upstream>
-		<remote-id type="github">seatgeek/fuzzywuzzy</remote-id>
-		<remote-id type="pypi">fuzzywuzzy</remote-id>
+		<remote-id type="github">seatgeek/thefuzz</remote-id>
+		<remote-id type="pypi">thefuzz</remote-id>
 	</upstream>
 </pkgmetadata>
