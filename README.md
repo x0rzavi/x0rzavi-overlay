@@ -1,6 +1,10 @@
 # x0rzavi-overlay
 Gentoo overlay for my absolutely necessary things :P
 
+# Note
+Since this is an unofficial repo, and as applicable to any unofficial repo,
+please verify ebuilds beforehand if you are paranoid
+
 ## Add repository
 1. ```eselect repository add x0rzavi git https://github.com/x0rzavi/x0rzavi-overlay.git```
 2. ```emaint sync -r x0rzavi```
