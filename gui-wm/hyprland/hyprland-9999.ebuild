@@ -42,6 +42,7 @@ BDEPEND="|| ( >=sys-devel/gcc-12.1.0 >=sys-devel/clang-15 )
 		 dev-util/ninja
 		 dev-util/cmake
 		 dev-util/meson
+		 gui-libs/wlroots
 		 virtual/pkgconfig
 "
 
