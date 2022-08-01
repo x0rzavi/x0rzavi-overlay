@@ -9,7 +9,9 @@ Gentoo overlay for my absolutely necessary things :P
 - [app-containers/distrobox](https://github.com/89luca89/distrobox)
 - [dev-python/thefuzz](https://github.com/seatgeek/thefuzz)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
+- [gui-libs/pywm](https://github.com/jbuchermn/pywm)
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
+- [gui-wm/newm](https://github.com/jbuchermn/newm)
 - [net-dns/doggo](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
 - [net-misc/wgcf](https://github.com/ViRb3/wgcf)
@@ -20,7 +22,3 @@ Gentoo overlay for my absolutely necessary things :P
 ## Proxy Maintained Packages
 - [dev-libs/bemenu](https://github.com/Cloudef/bemenu)
 - [dev-python/pyfiglet](https://pypi.org/project/pyfiglet)
-
-## WIP/Hacky Packages
-- [gui-libs/pywm](https://github.com/jbuchermn/pywm)
-- [gui-wm/newm](https://github.com/jbuchermn/newm)
