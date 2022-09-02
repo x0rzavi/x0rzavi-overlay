@@ -11,7 +11,6 @@ please verify ebuilds beforehand if you are paranoid
 
 ## Maintained Packages
 - [app-containers/distrobox](https://github.com/89luca89/distrobox)
-- [dev-python/thefuzz](https://github.com/seatgeek/thefuzz)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [net-dns/doggo](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
@@ -22,9 +21,12 @@ please verify ebuilds beforehand if you are paranoid
 
 ## Proxy Maintained Packages
 - [dev-libs/bemenu](https://github.com/Cloudef/bemenu)
-- [dev-python/pyfiglet](https://pypi.org/project/pyfiglet)
 
 ## Deprecated in favour of other overlays :"(
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
 - [gui-libs/pywm](https://github.com/jbuchermn/pywm)
 - [gui-wm/newm](https://github.com/jbuchermn/newm)
+
+## Dropped packages since no longer required :"(
+- [dev-python/thefuzz](https://github.com/seatgeek/thefuzz)
+- [dev-python/pyfiglet](https://pypi.org/project/pyfiglet)
