@@ -13,8 +13,6 @@ please verify ebuilds beforehand if you are paranoid
 - [app-containers/distrobox](https://github.com/89luca89/distrobox)
 - [dev-python/thefuzz](https://github.com/seatgeek/thefuzz)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
-- [gui-libs/pywm](https://github.com/jbuchermn/pywm)
-- [gui-wm/newm](https://github.com/jbuchermn/newm)
 - [net-dns/doggo](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
 - [net-misc/wgcf](https://github.com/ViRb3/wgcf)
@@ -28,3 +26,5 @@ please verify ebuilds beforehand if you are paranoid
 
 ## Deprecated in favour of other overlays :"(
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
+- [gui-libs/pywm](https://github.com/jbuchermn/pywm)
+- [gui-wm/newm](https://github.com/jbuchermn/newm)
