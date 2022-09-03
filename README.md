@@ -21,6 +21,7 @@ please verify ebuilds beforehand if you are paranoid
 
 ## Proxy Maintained Packages
 - [dev-libs/bemenu](https://github.com/Cloudef/bemenu)
+- [net-fs/samba](https://samba.org) (Support for using llvm-libunwind)
 
 ## Deprecated in favour of other overlays :"(
 - [gui-wm/hyprland](https://github.com/hyprwm/Hyprland)
