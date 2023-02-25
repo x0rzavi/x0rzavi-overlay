@@ -2,7 +2,7 @@
 Gentoo overlay for my absolutely necessary things :P
 
 # Note
-Since this is an unofficial repo, and as applicable to any unofficial repo,
+Since this is an unofficial repo, as applicable to any unofficial repo,
 please verify ebuilds beforehand if you are paranoid
 
 ## Add repository
