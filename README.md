@@ -9,11 +9,14 @@ please verify ebuilds beforehand if you are paranoid
 1. ```eselect repository add x0rzavi git https://github.com/x0rzavi/x0rzavi-overlay.git```
 2. ```emaint sync -r x0rzavi```
 
-## Packages
+## Maintained packages
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
-- [net-dns/doggo](https://github.com/mr-karan/doggo)
+- [net-dns/doggo-bin](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
 - [net-misc/wgcf](https://github.com/ViRb3/wgcf)
 - [sys-fs/sanoid](https://github.com/jimsalterjrs/sanoid)
 - [sys-kernel/zenpower3](https://git.exozy.me/Ta180m/zenpower3)
 - [sys-power/nbfc-linux](https://github.com/nbfc-linux/nbfc-linux)
+
+## Proxy maintained packages
+- [gui-apps/grim](https://sr.ht/~emersion/grim/)
