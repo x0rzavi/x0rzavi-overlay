@@ -30,5 +30,5 @@ src_unpack() {
 
 src_install() {
 	dobin ${MY_PN}
-	dodoc ${DISTDIR}/${MY_PN}.1
+	doman ${DISTDIR}/${MY_PN}.1
 }
