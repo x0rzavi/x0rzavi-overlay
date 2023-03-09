@@ -17,9 +17,10 @@ MY_P="${MY_PN}-${PV}"
 
 RDEPEND=""
 DEPEND="${RDEPEND}"
+BDEPEND=""
 SRC_URI="https://github.com/mr-karan/${MY_PN}/releases/download/v${PV}/${MY_PN}_${PV}_linux_amd64.tar.gz -> ${MY_P}.tar.gz"
 
-QA_PREBUILT="/usr/bin/doggo"
+QA_PREBUILT="/usr/bin/${MY_PN}"
 
 src_unpack() {
 	mkdir -p ${S}
