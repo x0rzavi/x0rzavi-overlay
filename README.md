@@ -15,6 +15,7 @@ please verify ebuilds beforehand if you are paranoid
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
 - [net-misc/wgcf](https://github.com/ViRb3/wgcf)
 - [sys-fs/sanoid](https://github.com/jimsalterjrs/sanoid)
+- [sys-apps/gping-bin](https://github.com/orf/gping)
 - [sys-kernel/zenpower3](https://git.exozy.me/Ta180m/zenpower3)
 - [sys-power/nbfc-linux](https://github.com/nbfc-linux/nbfc-linux)
 
