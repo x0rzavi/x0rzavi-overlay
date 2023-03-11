@@ -29,7 +29,7 @@ BDEPEND="virtual/pkgconfig
 		dev-util/cmake"
 
 src_compile() {
-	make all
+	emake all
 }
 
 src_install () {
