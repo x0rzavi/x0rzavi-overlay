@@ -16,7 +16,7 @@ RESTRICT="mirror"
 
 RDEPEND="gui-apps/wl-clipboard
 		x11-misc/xdg-utils"
-DEPEND="${RDEPEND}"
+DEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 SRC_URI="https://github.com/sentriz/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz

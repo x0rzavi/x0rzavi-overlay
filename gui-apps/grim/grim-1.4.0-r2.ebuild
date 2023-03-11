@@ -20,13 +20,13 @@ LICENSE="MIT"
 SLOT="0"
 IUSE="+man jpeg"
 
-RDEPEND="
+DEPEND="
 	dev-libs/wayland
 	media-libs/libpng
 	x11-libs/pixman
 	jpeg? ( media-libs/libjpeg-turbo )
 "
-DEPEND="${RDEPEND}
+RDEPEND="${DEPEND}
 	>=dev-libs/wayland-protocols-1.14
 "
 BDEPEND="man? ( app-text/scdoc )"

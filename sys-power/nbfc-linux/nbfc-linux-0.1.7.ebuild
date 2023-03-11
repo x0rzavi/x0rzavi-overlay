@@ -23,8 +23,8 @@ LICENSE="GPL-3"
 SLOT="0"
 IUSE="zsh-completion bash-completion fish-completion"
 
-RDEPEND="sys-apps/dmidecode"
-DEPEND="${RDEPEND}"
+DEPEND="sys-apps/dmidecode"
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="

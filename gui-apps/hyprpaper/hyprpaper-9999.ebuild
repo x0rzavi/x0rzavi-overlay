@@ -21,9 +21,9 @@ SLOT="0"
 IUSE=""
 DOCS="LICENSE README.md"
 
-RDEPEND="dev-libs/wayland
+DEPEND="dev-libs/wayland
 "
-DEPEND="${RDEPEND}"
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig
 		dev-libs/wayland-protocols
 		dev-util/cmake"

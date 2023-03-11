@@ -14,8 +14,8 @@ IUSE="+pie zsh-completion fish-completion"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND=""
+RDEPEND="${DEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 SRC_URI="https://github.com/mr-karan/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz

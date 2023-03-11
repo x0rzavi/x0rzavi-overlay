@@ -110,7 +110,7 @@ COMMON_DEPEND="
 	systemd? ( sys-apps/systemd:0= )
 	zeroconf? ( net-dns/avahi[dbus] )
 "
-DEPEND="${COMMON_DEPEND}
+RDEPEND="${COMMON_DEPEND}
 	>=dev-util/cmocka-1.1.3[${MULTILIB_USEDEP}]
 	dev-perl/JSON
 	net-libs/libtirpc[${MULTILIB_USEDEP}]
@@ -128,7 +128,7 @@ DEPEND="${COMMON_DEPEND}
 			>=sys-libs/uid_wrapper-1.2.1
 		)
 	)"
-RDEPEND="${COMMON_DEPEND}
+DEPEND="${COMMON_DEPEND}
 	client? ( net-fs/cifs-utils[ads?] )
 	python? ( ${PYTHON_DEPS} )
 	selinux? ( sec-policy/selinux-samba )

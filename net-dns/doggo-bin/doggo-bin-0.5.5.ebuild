@@ -15,8 +15,8 @@ RESTRICT="mirror"
 MY_PN="doggo"
 MY_P="${MY_PN}-${PV}"
 
-RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND=""
+RDEPEND="${DEPEND}"
 BDEPEND=""
 SRC_URI="https://github.com/mr-karan/${MY_PN}/releases/download/v${PV}/${MY_PN}_${PV}_linux_amd64.tar.gz -> ${MY_P}.tar.gz"
 
