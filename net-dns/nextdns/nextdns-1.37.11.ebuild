@@ -14,8 +14,8 @@ IUSE="+pie"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND=""
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 SRC_URI="https://github.com/${PN}/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz

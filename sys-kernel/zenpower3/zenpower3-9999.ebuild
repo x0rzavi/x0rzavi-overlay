@@ -21,8 +21,8 @@ LICENSE="GPL-2"
 SLOT="0"
 IUSE=""
 
-DEPEND=""
-RDEPEND="${DEPEND}"
+RDEPEND=""
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 PATCHES="${FILESDIR}/${P}-use-symlink-to-detect-kernel-version.patch"
@@ -30,10 +30,10 @@ PATCHES="${FILESDIR}/${P}-use-symlink-to-detect-kernel-version.patch"
 CONFIG_CHECK="HWMON
 			  PCI
 			  AMD_NB
-			  ~!CONFIG_SENSORS_K10RDEPEND
+			  ~!CONFIG_SENSORS_K10TEMP
 "
 
-WARNING_CONFIG_SENSORS_K10RDEPEND="Because zenpower is using same PCI device as k10temp,
+WARNING_CONFIG_SENSORS_K10TEMP="Because zenpower is using same PCI device as k10temp,
 								you have to disable k10temp first, either from kernel
 								or by blacklisting the module"
 

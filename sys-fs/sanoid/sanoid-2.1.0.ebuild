@@ -22,7 +22,7 @@ SLOT="0"
 IUSE=""
 DOCS="CHANGELIST LICENSE README.md sanoid.conf"
 
-DEPEND="dev-perl/Config-IniFiles
+RDEPEND="dev-perl/Config-IniFiles
 		 dev-perl/Capture-Tiny
 		 sys-apps/pv
 		 app-arch/lzop
@@ -32,7 +32,7 @@ DEPEND="dev-perl/Config-IniFiles
 		 app-arch/gzip
 		 sys-block/mbuffer
 "
-RDEPEND="${DEPEND}"
+DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 src_install () {

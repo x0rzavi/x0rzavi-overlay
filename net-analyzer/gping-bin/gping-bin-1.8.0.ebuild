@@ -14,8 +14,8 @@ RESTRICT="mirror"
 MY_PN="gping"
 MY_P="${MY_PN}-${PV}"
 
-RDEPEND=""
-DEPEND="${DEPEND}"
+DEPEND=""
+RDEPEND="${DEPEND}"
 BDEPEND=""
 SRC_URI="https://github.com/orf/${MY_PN}/releases/download/${MY_PN}-v${PV}/${MY_PN}-Linux-x86_64.tar.gz -> ${MY_P}.tar.gz
 		https://github.com/orf/${MY_PN}/releases/download/${MY_PN}-v${PV}/${MY_PN}.1"
