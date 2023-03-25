@@ -20,3 +20,4 @@ Gentoo overlay for my absolutely necessary utilities :P
 
 ## Proxy maintained packages
 - [gui-apps/grim](https://sr.ht/~emersion/grim/)
+- [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
