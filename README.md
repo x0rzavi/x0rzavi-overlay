@@ -19,5 +19,4 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [sys-power/nbfc-linux](https://github.com/nbfc-linux/nbfc-linux)
 
 ## Proxy maintained packages
-- [gui-apps/grim](https://sr.ht/~emersion/grim/)
 - [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
