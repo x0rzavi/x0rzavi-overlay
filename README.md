@@ -1,17 +1,14 @@
 # x0rzavi-overlay
-Gentoo overlay for my absolutely necessary things :P
+Gentoo overlay for my absolutely necessary utilities :P
 
-# Note
-Since this is an unofficial repo & as applicable to any unofficial repo,
-please verify ebuilds beforehand if you are paranoid
-
-## Add repository
+## Add overlay
 1. ```eselect repository add x0rzavi git https://github.com/x0rzavi/x0rzavi-overlay.git```
 2. ```emaint sync -r x0rzavi```
 
 ## Maintained packages
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
+- [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
 - [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
 - [net-analyzer/gping-bin](https://github.com/orf/gping)
 - [net-dns/doggo-bin](https://github.com/mr-karan/doggo)
