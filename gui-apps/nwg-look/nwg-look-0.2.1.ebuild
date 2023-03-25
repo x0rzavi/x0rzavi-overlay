@@ -15,13 +15,13 @@ KEYWORDS="~amd64"
 RESTRICT="mirror"
 
 RDEPEND="x11-apps/xcur2png
-	x11-libs/gtk+"
+		x11-libs/gtk+"
 DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 SRC_URI="https://github.com/nwg-piotr/${PN}/archive/v${PV}.tar.gz -> ${P}.tar.gz
 		 https://github.com/x0rzavi/x0rzavi-overlay/raw/main/${CATEGORY}/${PN}/files/${P}-deps.tar.xz"
-DOCS="readme.md"
+DOCS="README.md"
 
 src_compile () {
 	export CGO_CFLAGS="${CFLAGS}"
@@ -36,18 +36,26 @@ src_compile () {
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.version=${PV}" \
-		-o ${PN} .
+		-o bin/${PN} .
 	else
 		ego build \
 		-trimpath \
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.version=${PV}" \
-		-o ${PN} .
+		-o bin/${PN} .
 	fi
 }
 
 src_install() {
 	einstalldocs
-	dobin ${PN}
+	insinto /usr/share/${PN}
+	doins stuff/main.glade
+	insinto /usr/share/${PN}/langs
+	doins langs/*
+	insinto /usr/share/applications/
+	doins stuff/${PN}.desktop
+	insinto /usr/share/pixmaps/
+	doins stuff/${PN}.svg
+	dobin bin/${PN}
 }
