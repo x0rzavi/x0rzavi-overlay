@@ -26,7 +26,7 @@ src_compile () {
 	export CGO_CPPFLAGS="${CXXFLAGS}"
 	export CGO_CXXFLAGS="${CXXFLAGS}"
 	export CGO_LDFLAGS="${LDFLAGS}"
-	
+
 	if use pie ; then
 		ego build \
 		--buildmode=pie \
