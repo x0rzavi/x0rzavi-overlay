@@ -20,3 +20,4 @@ Gentoo overlay for my absolutely necessary utilities :P
 
 ## Proxy maintained packages
 - [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
+- [media-sound/mpd-mpris](https://github.com/natsukagami/mpd-mpris)
