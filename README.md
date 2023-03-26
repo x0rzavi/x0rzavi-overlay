@@ -6,6 +6,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 2. ```emaint sync -r x0rzavi```
 
 ## Maintained packages
+- [app-misc/pfetch-rs](https://github.com/Gobidev/pfetch-rs)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
 - [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
