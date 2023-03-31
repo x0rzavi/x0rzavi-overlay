@@ -29,20 +29,20 @@ src_compile () {
 	export BUILD_DATE=$(date '+%Y-%m-%d %H:%M:%S')
 
 	if use pie ; then
-		ego build -o ${PN} \
+		ego build \
 		-buildmode=pie \
 		-trimpath \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-s -w -linkmode external -X main.buildVersion=${PV} -X main.buildDate=${BUILD_DATE}" \
-		${S}/cmd/doggo
+		-ldflags "-s -w -linkmode external -X main.buildVersion='${PV}' -X main.buildDate='${BUILD_DATE}'" \
+		-o ${PN} ./cmd/doggo/
 	else
 		ego build -o ${PN} \
 		-trimpath \
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.buildVersion=${PV} -X main.buildDate=${BUILD_DATE}" \
-		${S}/cmd/doggo
+		${S}/cmd/doggo/
 	fi
 }
 
