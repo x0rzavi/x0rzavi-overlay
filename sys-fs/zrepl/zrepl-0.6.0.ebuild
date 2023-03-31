@@ -3,14 +3,14 @@
 
 EAPI=8
 
-inherit go-module
+inherit go-module systemd
 
 DESCRIPTION="One-stop ZFS backup & replication solution"
 HOMEPAGE="https://github.com/zrepl/zrepl"
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE="+pie"
+IUSE="+pie zsh-completion bash-completion"
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -34,7 +34,7 @@ src_compile () {
 		-trimpath \
 		-mod=readonly \
 		-modcacherw \
-		-ldflags "-s -w -linkmode external -X main.version=${PV}" \
+		-ldflags "-s -w -linkmode external -X github.com/zrepl/zrepl/version.zreplVersion=${PV}" \
 		-o ${PN} .
 	else
 		ego build \
@@ -47,6 +47,24 @@ src_compile () {
 }
 
 src_install() {
-	einstalldocs
 	dobin ${PN}
+	einstalldocs
+
+	if use zsh-completion ; then
+		${D}/usr/bin/${PN} gencompletion zsh _zrepl
+		insinto /usr/share/zsh/site-functions
+		doins _zrepl
+	fi
+	if use bash-completion ; then
+		${D}/usr/bin/${PN} gencompletion bash zrepl
+		insinto /usr/share/bash-completion/completions
+		doins zrepl
+	fi
+
+	insinto /usr/share/${PN}/samples
+	doins config/samples/*
+
+	# doinitd dist/openrc/zrepl
+	doinitd ${FILESDIR}/zrepl
+	systemd_dounit dist/systemd/zrepl.service
 }
