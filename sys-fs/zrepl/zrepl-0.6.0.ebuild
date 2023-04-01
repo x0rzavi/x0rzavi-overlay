@@ -65,6 +65,6 @@ src_install() {
 	doins config/samples/*
 
 	# doinitd dist/openrc/zrepl
-	doinitd ${FILESDIR}/zrepl
+	newinitd ${FILESDIR}/zrepl-0.6.0.initd zrepl
 	systemd_dounit dist/systemd/zrepl.service
 }
