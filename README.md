@@ -10,7 +10,6 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
 - [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
-- [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
 - [net-analyzer/gping-bin](https://github.com/orf/gping)
 - [net-dns/doggo-bin](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
@@ -23,3 +22,6 @@ Gentoo overlay for my absolutely necessary utilities :P
 ## Proxy maintained packages
 - [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
 - [media-sound/mpd-mpris](https://github.com/natsukagami/mpd-mpris)
+
+## Deprecated in favour of official repos
+- [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
