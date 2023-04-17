@@ -71,7 +71,7 @@ done
 
 IUSE="+config ${IUSE_CPUSCHED} tune_bore NUMAdisable +cc_harder +per_gov +tcp_bbr2
 	${IUSE_HZTICKS} ${IUSE_TICKRATE} ${IUSE_PREEMPT} +mq_deadline_disable +kyber_disable
-	${IUSE_LRU} ${IUSE_HUGEPAGE} damon lrng +use_auto_optimization disable_debug
+	${IUSE_LRU} ${IUSE_HUGEPAGE} damon lrng +auto_optimization disable_debug
 	zstd_compression ${IUSE_ZSTDLEVEL} bcachefs +latency_nice"
 
 REQUIRED_USE="^^ ( ${IUSE_CPUSCHED//+} )
@@ -86,7 +86,7 @@ src_unpack() {
 	kernel-2_src_unpack
 
 	# unipatch "${MY_FILESDIR}/0001-cachyos-base-all.patch"
-	UNIPATCH_LIST+="${MY_FILESDIR}/0001-cachyos-base-all.patch"
+	PATCH_LIST+=" ${MY_FILESDIR}/0001-cachyos-base-all.patch"
 	if use config; then
 		cp "${MY_FILESDIR}/config/config-eevdf" .config
 		scripts/config -e CACHY
@@ -102,7 +102,7 @@ src_unpack() {
 	# 	fi
 	# fi
 
-	if use cpusched_eevdf; then UNIPATCH_LIST+=" ${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+	if use cpusched_eevdf; then PATCH_LIST+=" ${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
 	# if use cpusched_eevdf; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
 	# if use cpusched_pds || use cpu_sched_bmq; then unipatch "${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
 	# if use cpusched_tt; then unipatch "${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
@@ -113,6 +113,11 @@ src_unpack() {
 
 	# if use bcachefs; then unipatch "${MY_FILESDIR}/misc/0001-bcachefs.patch"; fi
 	# if use lrng; then unipatch "${MY_FILESDIR}/misc/0001-lrng.patch"; fi
+
+	
+	for patch in ${PATCH_LIST}; do
+		unipatch "${patch}"
+	done
 }
 
 pkg_postinst() {
