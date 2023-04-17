@@ -79,27 +79,40 @@ REQUIRED_USE="^^ ( ${IUSE_CPUSCHED//+} )
 			^^ ( ${IUSE_TICKRATE//+} )
 			^^ ( ${IUSE_PREEMPT//+} )
 			^^ ( ${IUSE_LRU//+} )
-			^^ ( ${IUSE_ZSTDLEVEL//+} )
-			^^ ( ${IUSE_HUGEPAGE//+} )"
+			^^ ( ${IUSE_HUGEPAGE//+} )
+			^^ ( ${IUSE_ZSTDLEVEL//+} )"
 
 src_unpack() {
 	kernel-2_src_unpack
 
-	unipatch "${MY_FILESDIR}/0001-cachyos-base-all.patch"
-
-	if use cpusched_eevdf; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
-	if use cpusched_pds || use cpu_sched_bmq; then unipatch "${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
-	if use cpusched_tt; then unipatch "${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
-	if use cpusched_bore; then unipatch "${MY_FILESDIR}/sched/0001-bore-cachy.patch"; fi
-	# if use cpusched_cfs; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
-
+	# unipatch "${MY_FILESDIR}/0001-cachyos-base-all.patch"
+	UNIPATCH_LIST+="${MY_FILESDIR}/0001-cachyos-base-all.patch"
 	if use config; then
 		cp "${MY_FILESDIR}/config/config-eevdf" .config
 		scripts/config -e CACHY
-		elog "CachyOS config installed"
+		elog " "
+		elog "CachyOS kernel config installed"
+		elog " "
 	fi
-
 	if use auto_optimization; then "${MY_FILESDIR}/auto-cpu-optimization.sh"; fi
+
+	# if use latency_nice; then
+	# 	if use cpusched_bore || use cpusched_cfs; 
+	# 		then unipatch "${MY_FILESDIR}/misc/0001-Add-latency-priority-for-CFS-class.patch"
+	# 	fi
+	# fi
+
+	if use cpusched_eevdf; then UNIPATCH_LIST+=" ${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+	# if use cpusched_eevdf; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+	# if use cpusched_pds || use cpu_sched_bmq; then unipatch "${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
+	# if use cpusched_tt; then unipatch "${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
+	# if use cpusched_bore; then
+	# 	if use tune_bore; then unipatch "${MY_FILESDIR}/misc/0001-bore-tuning-sysctl.patch"; fi
+	# 	unipatch "${MY_FILESDIR}/sched/0001-bore-cachy.patch"; fi
+	# # if use cpusched_cfs; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+
+	# if use bcachefs; then unipatch "${MY_FILESDIR}/misc/0001-bcachefs.patch"; fi
+	# if use lrng; then unipatch "${MY_FILESDIR}/misc/0001-lrng.patch"; fi
 }
 
 pkg_postinst() {
