@@ -28,14 +28,14 @@ for sched in ${CPUSCHED}; do
 done
 
 # Define USE flags for HZ ticks
-HZTICKS="bmq pds bore cfs tt eevdf"
+HZTICKS="100 250 300 500 600 750 1000"
 for rate in ${HZTICKS}; do
 	if [ "${rate}" = "500" ]; then IUSE_HZTICKS+=" +hzticks_${rate}" # Set default
 	else IUSE_HZTICKS+=" hzticks_${rate}"; fi
 done
 
 # Define USE flags for tick rate
-TICKRATE="full idle periodic"
+TICKRATE="full idle perodic"
 for tick in ${TICKRATE}; do
 	if [ "${tick}" = "full" ]; then IUSE_TICKRATE+=" +tickrate_${tick}" # Set default
 	else IUSE_TICKRATE+=" tickrate_${tick}"; fi
@@ -55,11 +55,11 @@ for config in ${LRU}; do
 	else IUSE_LRU+=" lru_${config}"; fi
 done
 
-# Define USE flags for transparent hugepages
-HUGEPAGES="always madvise"
-for type in ${HUGEPAGES}; do
-	if [ "${type}" = "always" ]; then IUSE_HUGEPAGES+=" +HUGEPAGES_${type}" # Set default
-	else IUSE_HUGEPAGES+=" hugepages_${type}"; fi
+# Define USE flags for transparent hugepage
+HUGEPAGE="always madvise"
+for type in ${HUGEPAGE}; do
+	if [ "${type}" = "always" ]; then IUSE_HUGEPAGE+=" +hugepage_${type}" # Set default
+	else IUSE_HUGEPAGE+=" hugepage_${type}"; fi
 done
 
 # Define USE flags for ZSTD compression level
@@ -69,9 +69,9 @@ for type in ${ZSTDLEVEL}; do
 	else IUSE_ZSTDLEVEL+=" zstdlevel_${type}"; fi
 done
 
-IUSE="+config ${IUSE_CPUSCHED} tune_bore NUMAdisable cc_harder +per_gov +tcp_bbr2
+IUSE="+config ${IUSE_CPUSCHED} tune_bore NUMAdisable +cc_harder +per_gov +tcp_bbr2
 	${IUSE_HZTICKS} ${IUSE_TICKRATE} ${IUSE_PREEMPT} +mq_deadline_disable +kyber_disable
-	${IUSE_LRU} ${IUSE_HUGEPAGES} damon lrng +use_auto_optimization disable_debug
+	${IUSE_LRU} ${IUSE_HUGEPAGE} damon lrng +use_auto_optimization disable_debug
 	zstd_compression ${IUSE_ZSTDLEVEL} bcachefs +latency_nice"
 
 REQUIRED_USE="^^ ( ${IUSE_CPUSCHED//+} )
@@ -80,7 +80,7 @@ REQUIRED_USE="^^ ( ${IUSE_CPUSCHED//+} )
 			^^ ( ${IUSE_PREEMPT//+} )
 			^^ ( ${IUSE_LRU//+} )
 			^^ ( ${IUSE_ZSTDLEVEL//+} )
-			^^ ( ${IUSE_HUGEPAGES//+} )"
+			^^ ( ${IUSE_HUGEPAGE//+} )"
 
 src_unpack() {
 	kernel-2_src_unpack
