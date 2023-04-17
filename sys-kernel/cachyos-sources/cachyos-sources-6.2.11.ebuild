@@ -21,33 +21,85 @@ MY_KV="${KV_MAJOR}.${KV_MINOR}"
 MY_FILESDIR="${FILESDIR}/${MY_KV}"
 
 # Define USE flags for CPU schedulers
-CPU_SCHED="bmq pds bore cfs tt eevdf"
-for sched in ${CPU_SCHED}; do
-	if [ "${sched}" = "eevdf" ]; then IUSE_CPU_SCHED+=" +cpu_sched_${sched}" # Set default
-	else IUSE_CPU_SCHED+=" cpu_sched_${sched}"; fi
+CPUSCHED="bmq pds bore cfs tt eevdf"
+for sched in ${CPUSCHED}; do
+	if [ "${sched}" = "eevdf" ]; then IUSE_CPUSCHED+=" +cpusched_${sched}" # Set default
+	else IUSE_CPUSCHED+=" cpusched_${sched}"; fi
 done
 
-IUSE="+config +auto_optimization ${IUSE_CPU_SCHED}"
-REQUIRED_USE="^^ ( "${IUSE_CPU_SCHED//+}" )"
+# Define USE flags for HZ ticks
+HZTICKS="bmq pds bore cfs tt eevdf"
+for rate in ${HZTICKS}; do
+	if [ "${rate}" = "500" ]; then IUSE_HZTICKS+=" +hzticks_${rate}" # Set default
+	else IUSE_HZTICKS+=" hzticks_${rate}"; fi
+done
+
+# Define USE flags for tick rate
+TICKRATE="full idle periodic"
+for tick in ${TICKRATE}; do
+	if [ "${tick}" = "full" ]; then IUSE_TICKRATE+=" +tickrate_${tick}" # Set default
+	else IUSE_TICKRATE+=" tickrate_${tick}"; fi
+done
+
+# Define USE flags for preempt
+PREEMPT="full voluntary server"
+for type in ${PREEMPT}; do
+	if [ "${type}" = "full" ]; then IUSE_PREEMPT+=" +preempt_${type}" # Set default
+	else IUSE_PREEMPT+=" preempt_${type}"; fi
+done
+
+# Define USE flags for LRU
+LRU="standard stats none"
+for config in ${LRU}; do
+	if [ "${config}" = "standard" ]; then IUSE_LRU+=" +lru_${config}" # Set default
+	else IUSE_LRU+=" lru_${config}"; fi
+done
+
+# Define USE flags for transparent hugepages
+HUGEPAGES="always madvise"
+for type in ${HUGEPAGES}; do
+	if [ "${type}" = "always" ]; then IUSE_HUGEPAGES+=" +HUGEPAGES_${type}" # Set default
+	else IUSE_HUGEPAGES+=" hugepages_${type}"; fi
+done
+
+# Define USE flags for ZSTD compression level
+ZSTDLEVEL="ultra normal"
+for type in ${ZSTDLEVEL}; do
+	if [ "${type}" = "normal" ]; then IUSE_ZSTDLEVEL+=" +zstdlevel_${type}" # Set default
+	else IUSE_ZSTDLEVEL+=" zstdlevel_${type}"; fi
+done
+
+IUSE="+config ${IUSE_CPUSCHED} tune_bore NUMAdisable cc_harder +per_gov +tcp_bbr2
+	${IUSE_HZTICKS} ${IUSE_TICKRATE} ${IUSE_PREEMPT} +mq_deadline_disable +kyber_disable
+	${IUSE_LRU} ${IUSE_HUGEPAGES} damon lrng +use_auto_optimization disable_debug
+	zstd_compression ${IUSE_ZSTDLEVEL} bcachefs +latency_nice"
+
+REQUIRED_USE="^^ ( ${IUSE_CPUSCHED//+} )
+			^^ ( ${IUSE_HZTICKS//+} )
+			^^ ( ${IUSE_TICKRATE//+} )
+			^^ ( ${IUSE_PREEMPT//+} )
+			^^ ( ${IUSE_LRU//+} )
+			^^ ( ${IUSE_ZSTDLEVEL//+} )
+			^^ ( ${IUSE_HUGEPAGES//+} )"
 
 src_unpack() {
 	kernel-2_src_unpack
 
 	unipatch "${MY_FILESDIR}/0001-cachyos-base-all.patch"
 
-	if use cpu_sched_eevdf; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
-	if use cpu_sched_pds || use cpu_sched_bmq; then unipatch "${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
-	if use cpu_sched_tt; then unipatch "${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
-	if use cpu_sched_bore; then unipatch "${MY_FILESDIR}/sched/0001-bore-cachy.patch"; fi
-	# if use cpu_sched_cfs; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
-
-	if use auto_optimization; then "${MY_FILESDIR}/auto-cpu-optimization.sh"; fi
+	if use cpusched_eevdf; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+	if use cpusched_pds || use cpu_sched_bmq; then unipatch "${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
+	if use cpusched_tt; then unipatch "${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
+	if use cpusched_bore; then unipatch "${MY_FILESDIR}/sched/0001-bore-cachy.patch"; fi
+	# if use cpusched_cfs; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
 
 	if use config; then
 		cp "${MY_FILESDIR}/config/config-eevdf" .config
 		scripts/config -e CACHY
 		elog "CachyOS config installed"
 	fi
+
+	if use auto_optimization; then "${MY_FILESDIR}/auto-cpu-optimization.sh"; fi
 }
 
 pkg_postinst() {
