@@ -5,9 +5,8 @@ EAPI="8"
 ETYPE="sources"
 K_WANT_GENPATCHES="base extras"
 K_GENPATCHES_VER="13"
-K_SECURITY_UNSUPPORTED="1"
 K_NODRYRUN="1"
-# EXTRAVERSION="-cachy"
+UNIPATCH_STRICTORDER="1"
 
 inherit kernel-2
 detect_version
@@ -28,15 +27,16 @@ REQUIRED_USE="^^ ( "${IUSE_CPU_SCHED//+}" )"
 
 DESCRIPTION="Linux Kernel by CachyOS with patches and performance improvements"
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
-MY_KV="${KV_MAJOR}.${KV_MINOR}.${KV_PATCH}"
+MY_KV="${KV_MAJOR}.${KV_MINOR}"
 
 src_unpack() {
-	UNIPATCH_LIST+=" ${FILESDIR}/${MY_KV}-cachyos-base-all.patch"
-
-	if use cpu_sched_eevdf; then UNIPATCH_LIST+=" ${FILESDIR}/sched/${MY_KV}-EEVDF.patch"; fi
 	kernel-2_src_unpack
+
+	unipatch "${FILESDIR}/${MY_KV}/0001-cachyos-base-all.patch"
+
+	if use cpu_sched_eevdf; then unipatch "${FILESDIR}/${MY_KV}/sched/0001-EEVDF.patch"; fi
 	if use config; then
-		cp "${FILESDIR}/config/6.2.11-config-eevdf" .config
+		cp "${FILESDIR}/${MY_KV}/config/config-eevdf" .config
 		scripts/config -e CACHY
 		elog "CachyOS config installed"
 	fi
@@ -46,8 +46,4 @@ pkg_postinst() {
 	kernel-2_pkg_postinst
 	einfo "For more info on this patchset, and how to report problems, see:"
 	einfo "${HOMEPAGE}"
-}
-
-pkg_postrm() {
-	kernel-2_pkg_postrm
 }
