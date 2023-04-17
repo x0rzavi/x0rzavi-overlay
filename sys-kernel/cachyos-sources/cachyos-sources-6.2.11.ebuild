@@ -15,6 +15,11 @@ detect_arch
 KEYWORDS="~amd64"
 HOMEPAGE="https://github.com/CachyOS/linux-cachyos"
 
+DESCRIPTION="Linux Kernel by CachyOS with patches and performance improvements"
+SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
+MY_KV="${KV_MAJOR}.${KV_MINOR}"
+MY_FILESDIR="${FILESDIR}/${MY_KV}"
+
 # Define USE flags for CPU schedulers
 CPU_SCHED="bmq pds bore cfs tt eevdf"
 for sched in ${CPU_SCHED}; do
@@ -22,21 +27,24 @@ for sched in ${CPU_SCHED}; do
 	else IUSE_CPU_SCHED+=" cpu_sched_${sched}"; fi
 done
 
-IUSE="${IUSE_CPU_SCHED} +config"
+IUSE="+config +auto_optimization ${IUSE_CPU_SCHED}"
 REQUIRED_USE="^^ ( "${IUSE_CPU_SCHED//+}" )"
-
-DESCRIPTION="Linux Kernel by CachyOS with patches and performance improvements"
-SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
-MY_KV="${KV_MAJOR}.${KV_MINOR}"
 
 src_unpack() {
 	kernel-2_src_unpack
 
-	unipatch "${FILESDIR}/${MY_KV}/0001-cachyos-base-all.patch"
+	unipatch "${MY_FILESDIR}/0001-cachyos-base-all.patch"
 
-	if use cpu_sched_eevdf; then unipatch "${FILESDIR}/${MY_KV}/sched/0001-EEVDF.patch"; fi
+	if use cpu_sched_eevdf; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+	if use cpu_sched_pds || use cpu_sched_bmq; then unipatch "${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
+	if use cpu_sched_tt; then unipatch "${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
+	if use cpu_sched_bore; then unipatch "${MY_FILESDIR}/sched/0001-bore-cachy.patch"; fi
+	# if use cpu_sched_cfs; then unipatch "${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
+
+	if use auto_optimization; then "${MY_FILESDIR}/auto-cpu-optimization.sh"; fi
+
 	if use config; then
-		cp "${FILESDIR}/${MY_KV}/config/config-eevdf" .config
+		cp "${MY_FILESDIR}/config/config-eevdf" .config
 		scripts/config -e CACHY
 		elog "CachyOS config installed"
 	fi
