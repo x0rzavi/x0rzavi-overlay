@@ -94,7 +94,7 @@ src_unpack() {
 	fi
 
 	if use cpusched_eevdf; then PATCH_LIST+=" ${MY_FILESDIR}/sched/0001-EEVDF.patch"; fi
-	if use cpusched_pds || use cpu_sched_bmq; then PATCH_LIST+=" ${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
+	if use cpusched_pds || use cpusched_bmq; then PATCH_LIST+=" ${MY_FILESDIR}/sched/0001-prjc-cachy.patch"; fi
 	if use cpusched_tt; then PATCH_LIST+=" ${MY_FILESDIR}/sched/0001-tt-cachy.patch"; fi
 	if use cpusched_bore; then
 		if use tune_bore; then PATCH_LIST+=" ${MY_FILESDIR}/misc/0001-bore-tuning-sysctl.patch"; fi
@@ -117,7 +117,7 @@ src_unpack() {
 	if use auto_optimization; then "${MY_FILESDIR}/auto-cpu-optimization.sh"; fi
 
 	if use cpusched_pds; then scripts/config -e SCHED_ALT -d SCHED_BMQ -e SCHED_PDS -e PSI_DEFAULT_DISABLED; fi
-	if use cpu_sched_bmq; then scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS -e PSI_DEFAULT_DISABLED; fi
+	if use cpusched_bmq; then scripts/config -e SCHED_ALT -e SCHED_BMQ -d SCHED_PDS -e PSI_DEFAULT_DISABLED; fi
 	if use cpusched_tt; then scripts/config -e TT_SCHED -e TT_ACCOUNTING_STATS; fi
 	if use cpusched_bore || use cpusched_eevdf; then scripts/config -e SCHED_BORE; fi
 	
