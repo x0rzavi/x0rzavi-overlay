@@ -1,0 +1,13 @@
+diff --git a/cmake/FindBpfObject.cmake b/cmake/FindBpfObject.cmake
+index 2f2ada3..caa248e 100644
+--- a/cmake/FindBpfObject.cmake
++++ b/cmake/FindBpfObject.cmake
+@@ -170,7 +170,7 @@ macro(bpf_object name input)
+ 
+   # Build BPF object file
+   add_custom_command(OUTPUT ${BPF_O_FILE}
+-    COMMAND ${BPFOBJECT_CLANG_EXE} -g -O2 -target bpf -D__TARGET_ARCH_${ARCH}
++    COMMAND ${BPFOBJECT_CLANG_EXE} -g -O2 -fno-stack-protector -target bpf -D__TARGET_ARCH_${ARCH}
+             ${CLANG_SYSTEM_INCLUDES} -I${GENERATED_VMLINUX_DIR} -I${BPF_ADDITIONAL_INCLUDE_DIRS}
+             -isystem ${LIBBPF_INCLUDE_DIRS} -c ${BPF_C_FILE} -o ${BPF_O_FILE}
+     VERBATIM

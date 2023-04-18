@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "https://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<email>x0rzavi@gmail.com</email>
+		<name>Avishek Sen</name>
+	</maintainer>
+	<upstream>
+		<bugs-to>https://gitlab.com/ananicy-cpp/ananicy-cpp/-/issues</bugs-to>
+		<remote-id type="gitlab">ananicy-cpp/ananicy-cpp</remote-id>
+	</upstream>
+	<use>
+        	<flag name="bpf">Enable bpf implementation</flag>
+	</use>
+</pkgmetadata>
