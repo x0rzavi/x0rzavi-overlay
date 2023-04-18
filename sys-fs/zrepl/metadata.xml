@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Avishek Sen</name>
+		<email>x0rzavi@github.com</email>
+	</maintainer>
+	<upstream>
+		<remote-id type="github">zrepl/zrepl</remote-id>
+	</upstream>
+	<use>
+		<flag name="zsh-completion">Enable zsh-completion support</flag>
+		<flag name="bash-completion">Enable bash-completion support</flag>
+	</use>
+</pkgmetadata>
