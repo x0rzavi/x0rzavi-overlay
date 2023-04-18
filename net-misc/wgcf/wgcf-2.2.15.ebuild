@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/ViRb3/wgcf"
 LICENSE="MIT"
 SLOT="0"
 IUSE="+pie"
+
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -34,18 +35,18 @@ src_compile () {
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.version=${PV}" \
-		-o ${PN} .
+		-o "${PN}" .
 	else
 		ego build \
 		-trimpath \
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.version=${PV}" \
-		-o ${PN} .
+		-o "${PN}" .
 	fi
 }
 
 src_install() {
 	einstalldocs
-	dobin ${PN}
+	dobin "${PN}"
 }

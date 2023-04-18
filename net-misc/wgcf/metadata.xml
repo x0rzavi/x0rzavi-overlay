@@ -5,9 +5,6 @@
 		<name>Avishek Sen</name>
 		<email>x0rzavi@github.com</email>
 	</maintainer>
-	<longdescription lang="en">
-		Cross-platform, unofficial CLI for Cloudflare Warp
-	</longdescription>
 	<upstream>
 		<remote-id type="github">ViRb3/wgcf</remote-id>
 	</upstream>
