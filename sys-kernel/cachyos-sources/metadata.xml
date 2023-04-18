@@ -15,7 +15,7 @@
 		<flag name="cpusched_bore">Enable 'Burst-Oriented Response Enhancer'</flag>
 		<flag name="cpusched_cfs">Enable 'Completely Fair Scheduler'</flag>
 		<flag name="cpusched_tt">Enable 'Task Type Scheduler by Hamad Marri'</flag>
-		<flag name="cpusched_eevdf">Enable EEVDF Scheduler with some CachyOS Optimizations. EEVDF does bring latency-nice as default</flag>
+		<flag name="cpusched_eevdf">Enable EEVDF Scheduler with some CachyOS Optimizations. EEVDF brings latency-nice as default</flag>
 		<flag name="tune_bore">Apply some suggested sysctl values from the bore developer</flag>
 		<flag name="NUMAdisable">Disable NUMA. NUMA is optimized for multi-socket motherboards</flag>
 		<flag name="cc_harder">Enable KBUILD_CFLAGS -O3</flag>
@@ -46,12 +46,12 @@
 		<flag name="auto_optimization">Use auto CPU optimizations</flag>
 		<flag name="disable_debug">Disable debug to lower the size of the kernel</flag>
 		<flag name="zstd_compression">Enable zram/zswap ZSTD compression</flag>
-		<flag name="zstdlevel_ultra">Set highest ZSTD compression ratio</flag>
+		<flag name="zstdlevel_ultra">Set highest ZSTD compression ratio. Ultra settings can sometimes be counterproductive in both size and speed.</flag>
 		<flag name="zstdlevel_normal">Set standard ZSTD compression ratio</flag>
 		<flag name="bcachefs">Enable bcachefs</flag>
-		<flag name="latency_nice">Enable LATENCY NICE</flag>
+		<flag name="latency_nice">Enable latency-nice patchset</flag>
 	</use>
 	<upstream>
-		<remote-id type="github">nbfc-linux/nbfc-linux</remote-id>
+		<remote-id type="github">CachyOS/linux-cachyos</remote-id>
 	</upstream>
 </pkgmetadata>
