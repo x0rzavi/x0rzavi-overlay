@@ -1,1 +1,1 @@
-hyprpaper-0.1.0.ebuild
+hyprpaper-0.2.0.ebuild

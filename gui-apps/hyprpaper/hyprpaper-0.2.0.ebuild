@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -19,7 +19,6 @@ fi
 
 LICENSE="BSD"
 SLOT="0"
-IUSE=""
 DOCS="LICENSE README.md"
 
 RDEPEND="dev-libs/wayland
@@ -38,6 +37,6 @@ src_compile() {
 }
 
 src_install () {
-	dobin build/${PN}
+	dobin "build/${PN}"
 	einstalldocs
 }
