@@ -172,4 +172,4 @@ DEPEND=""
 RDEPEND="${DEPEND}"
 BDEPEND=""
 
-QA_FLAGS_IGNORED="/usr/bin/pfetch"
+QA_PRESTRIPPED="/usr/bin/pfetch"
