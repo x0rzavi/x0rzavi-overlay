@@ -1,5 +1,5 @@
-# Copyright 2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -8,6 +8,7 @@ HOMEPAGE="https://github.com/orf/gping"
 
 LICENSE="MIT"
 SLOT="0"
+
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -23,12 +24,12 @@ SRC_URI="https://github.com/orf/${MY_PN}/releases/download/${MY_PN}-v${PV}/${MY_
 QA_PREBUILT="/usr/bin/${MY_PN}"
 
 src_unpack() {
-	mkdir -p ${S}
-	cd ${S}
-	unpack ${MY_P}.tar.gz
+	mkdir -p "${S}"
+	cd "${S}" || die
+	unpack "${MY_P}.tar.gz"
 }
 
 src_install() {
-	dobin ${MY_PN}
-	doman ${DISTDIR}/${MY_PN}.1
+	dobin "${MY_PN}"
+	doman "${DISTDIR}/${MY_PN}.1"
 }
