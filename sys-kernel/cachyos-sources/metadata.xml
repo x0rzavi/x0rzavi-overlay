@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE pkgmetadata SYSTEM "http://www.gentoo.org/dtd/metadata.dtd">
+<pkgmetadata>
+	<maintainer type="person">
+		<name>Avishek Sen</name>
+		<email>x0rzavi@github.com</email>
+	</maintainer>
+	<longdescription lang="en">
+		Linux Kernel by CachyOS with different schedulers, patches and performance improvements
+	</longdescription>
+	<use>
+		<flag name="config">Install CachyOS config</flag>
+		<flag name="cpusched_bmq">Enable 'BitMap Queue CPU scheduler'</flag>
+		<flag name="cpusched_pds">Enable 'Priority and Deadline based Skip list multiple queue CPU scheduler'</flag>
+		<flag name="cpusched_bore">Enable 'Burst-Oriented Response Enhancer'</flag>
+		<flag name="cpusched_cfs">Enable 'Completely Fair Scheduler'</flag>
+		<flag name="cpusched_tt">Enable 'Task Type Scheduler by Hamad Marri'</flag>
+		<flag name="cpusched_eevdf">Enable EEVDF Scheduler with some CachyOS Optimizations. EEVDF does bring latency-nice as default</flag>
+		<flag name="tune_bore">Apply some suggested sysctl values from the bore developer</flag>
+		<flag name="NUMAdisable">Disable NUMA. NUMA is optimized for multi-socket motherboards</flag>
+		<flag name="cc_harder">Enable KBUILD_CFLAGS -O3</flag>
+		<flag name="per_gov">Set performance governor as default</flag>
+		<flag name="tcp_bbr2">Enable TCP_CONG_BBR2</flag>
+		<flag name="hzticks_100">Set tick rate to 100Hz</flag>
+		<flag name="hzticks_250">Set tick rate to 250Hz</flag>
+		<flag name="hzticks_300">Set tick rate to 300Hz</flag>
+		<flag name="hzticks_500">Set tick rate to 500Hz</flag>
+		<flag name="hzticks_600">Set tick rate to 600Hz</flag>
+		<flag name="hzticks_750">Set tick rate to 750Hz</flag>
+		<flag name="hzticks_1000">Set tick rate to 1000Hz</flag>
+		<flag name="tickrate_full">Set tick type to Full. Full tickless can give higher performances in various cases but, depending on hardware, lower consistency.</flag>
+		<flag name="tickrate_idle">Set tick type to Idle</flag>
+		<flag name="tickrate_perodic">Set tick type to Periodic</flag>
+		<flag name="preempt_full">Set preemption type to Full</flag>
+		<flag name="preempt_voluntary">Set preemption type to Voluntary</flag>
+		<flag name="preempt_server">Set preemption type to Server</flag>
+		<flag name="mq_deadline_disable">Disable MQ-Deadline I/O scheduler</flag>
+		<flag name="kyber_disable">Disable Kyber I/O scheduler</flag>
+		<flag name="lru_standard">Enable multigenerational LRU</flag>
+		<flag name="lru_stats">Enable multigenerational LRU with stats</flag>
+		<flag name="lru_none">Disable multigenerational LRU</flag>
+		<flag name="hugepage_always">Always enable Transparent Hugepages</flag>
+		<flag name="hugepage_madvise">Prevent applications from allocating more memory resources than necessary</flag>
+		<flag name="damon">Enable DAMON</flag>
+		<flag name="lrng">Enable Linux Random Number Generator</flag>
+		<flag name="auto_optimization">Use auto CPU optimizations</flag>
+		<flag name="disable_debug">Disable debug to lower the size of the kernel</flag>
+		<flag name="zstd_compression">Enable zram/zswap ZSTD compression</flag>
+		<flag name="zstdlevel_ultra">Set highest ZSTD compression ratio</flag>
+		<flag name="zstdlevel_normal">Set standard ZSTD compression ratio</flag>
+		<flag name="bcachefs">Enable bcachefs</flag>
+		<flag name="latency_nice">Enable LATENCY NICE</flag>
+	</use>
+	<upstream>
+		<remote-id type="github">nbfc-linux/nbfc-linux</remote-id>
+	</upstream>
+</pkgmetadata>

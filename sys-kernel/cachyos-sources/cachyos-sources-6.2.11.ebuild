@@ -12,10 +12,13 @@ inherit kernel-2
 detect_version
 detect_arch
 
-KEYWORDS="~amd64"
+DESCRIPTION="Linux Kernel by CachyOS with different schedulers, patches and performance improvements"
 HOMEPAGE="https://github.com/CachyOS/linux-cachyos"
 
-DESCRIPTION="Linux Kernel by CachyOS with patches and performance improvements"
+LICENSE="GPL-3"
+SLOT="0"
+KEYWORDS="~amd64"
+
 SRC_URI="${KERNEL_URI} ${GENPATCHES_URI} ${ARCH_URI}"
 MY_KV="${KV_MAJOR}.${KV_MINOR}"
 MY_FILESDIR="${FILESDIR}/${MY_KV}"
