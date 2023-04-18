@@ -51,7 +51,7 @@ src_configure() {
 
 src_install() {
 	cmake_src_install
-	doinitd "${FILESDIR}/${PN}.initd"
+	newinitd "${FILESDIR}/${PN}.initd" "${PN}"
 	insinto /etc
 	mv "${WORKDIR}/ananicy-rules-${CACHY_COMMIT}" "${WORKDIR}/ananicy.d" || die
 	doins -r "${WORKDIR}/ananicy.d"
