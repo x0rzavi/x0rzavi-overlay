@@ -9,7 +9,6 @@
 		NoteBook FanControl ported to Linux
 	</longdescription>
 	<use>
-		<flag name="systemd">Enable systemd unit file installation</flag>
 		<flag name="zsh-completion">Enable zsh-completion support</flag>
 		<flag name="bash-completion">Enable bash-completion support</flag>
 		<flag name="fish-completion">Enable fish-completion support</flag>

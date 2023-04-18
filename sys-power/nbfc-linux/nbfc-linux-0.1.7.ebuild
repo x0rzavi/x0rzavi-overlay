@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -10,9 +10,11 @@ HOMEPAGE="https://github.com/nbfc-linux/nbfc-linux"
 
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
-	EGIT_BRANCH="main"
+	# EGIT_BRANCH="main"
+	EGIT_BRANCH="openrc"
 	EGIT_CLONE_TYPE="shallow"
-	EGIT_REPO_URI="https://github.com/nbfc-linux/${PN}.git"
+	# EGIT_REPO_URI="https://github.com/nbfc-linux/${PN}.git"
+	EGIT_REPO_URI="https://github.com/x0rzavi/${PN}.git"
 else
 	RESTRICT="mirror"
 	SRC_URI="https://github.com/nbfc-linux/${PN}/archive/${PV}.tar.gz -> ${P}.tar.gz"
@@ -39,29 +41,31 @@ WARNING_HWMON="No hardware monitoring support detected!
 PATCHES="${FILESDIR}/${PN}-9999-Makefile-Dont-strip.patch"
 
 src_compile() {
-	emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}"
+	if [[ ${PV} == 9999 ]]; then
+		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system orcdir=/etc/init.d DESTDIR="${D}"
+	else 
+		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}"
+	fi
 }
 
 src_install() {
-	emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install-c
-	if ! use zsh-completion ; then
-		rm -rf ${D}/usr/share/zsh || die "Removing unnecessary completions failed!"
+	if [[ ${PV} == 9999 ]]; then
+		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system orcdir=/etc/init.d DESTDIR="${D}" install-c install-openrc
+	else
+		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install-c
+		newinitd "${FILESDIR}/nbfc_service.initd nbfc_service"
 	fi
-	if ! use bash-completion ; then
-		rm -rf ${D}/usr/share/bash-completion || die "Removing unnecessary completions failed!"
-	fi
-	if ! use fish-completion ; then
-		rm -rf ${D}/usr/share/fish || die "Removing unnecessary completions failed!"
-	fi
+	if ! use zsh-completion ; then rm -rf "${D}/usr/share/zsh" || die "Removing unnecessary completions failed!"; fi
+	if ! use bash-completion ; then rm -rf "${D}/usr/share/bash-completion" || die "Removing unnecessary completions failed!"; fi
+	if ! use fish-completion ; then rm -rf "${D}/usr/share/fish" || die "Removing unnecessary completions failed!"; fi
 	einstalldocs
-	newinitd ${FILESDIR}/nbfc_service.initd nbfc_service
 }
 
 pkg_postinst() {
 	elog "nbfc-linux requires to monitor temperature sensors."
 	elog "Ensure that there is proper support."
 	elog " "
-	elog "If you wish nbfc_service to get started on boot," 
-	elog "use 'sudo systemctl enable nbfc_service' for systemd or"
-	elog "use 'sudo rc-update add nbfc_service default' for openrc"
+	elog "If you wish nbfc_service to get started on boot then," 
+	elog "for systemd use 'sudo systemctl enable nbfc_service' or "
+	elog "for openrc use 'sudo rc-update add nbfc_service default' "
 }
