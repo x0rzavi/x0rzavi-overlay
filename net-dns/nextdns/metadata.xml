@@ -5,9 +5,6 @@
 		<name>Avishek Sen</name>
 		<email>x0rzavi@github.com</email>
 	</maintainer>
-	<longdescription lang="en">
-		NextDNS CLI is a DNS53 to DNS-over-HTTPS (DoH) proxy with advanced capabilities to get the most out of the NextDNS service.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">nextdns/nextdns</remote-id>
 	</upstream>
