@@ -5,9 +5,6 @@
 		<name>Avishek Sen</name>
 		<email>x0rzavi@github.com</email>
 	</maintainer>
-	<longdescription lang="en">
-		Linux Kernel by CachyOS with different schedulers, patches and performance improvements
-	</longdescription>
 	<use>
 		<flag name="config">Install CachyOS config</flag>
 		<flag name="cpusched_bmq">Enable 'BitMap Queue CPU scheduler'</flag>

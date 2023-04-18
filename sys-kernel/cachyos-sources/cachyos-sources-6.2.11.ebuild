@@ -1,5 +1,5 @@
-# Copyright 1999-2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI="8"
 ETYPE="sources"
