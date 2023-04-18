@@ -5,9 +5,6 @@
 		<name>Avishek Sen</name>
 		<email>x0rzavi@github.com</email>
 	</maintainer>
-	<longdescription lang="en">
-		Cliphist is a clipboard history “manager” for wayland.
-	</longdescription>
 	<upstream>
 		<remote-id type="github">sentriz/cliphist</remote-id>
 	</upstream>
