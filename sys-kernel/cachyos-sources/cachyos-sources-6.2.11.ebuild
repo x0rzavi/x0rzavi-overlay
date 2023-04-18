@@ -114,8 +114,9 @@ src_unpack() {
 
 	if use config; then
 		cp "${MY_FILESDIR}/config/config-eevdf" .config
+		cp "${MY_FILESDIR}/config/config-eevdf" arch/x86/configs/cachy_defconfig
 		scripts/config -e CACHY
-		elog "CachyOS kernel config installed"
+		elog "CachyOS kernel config installed as cachy_defconfig"
 	fi
 	if use auto_optimization; then "${MY_FILESDIR}/auto-cpu-optimization.sh"; fi
 
