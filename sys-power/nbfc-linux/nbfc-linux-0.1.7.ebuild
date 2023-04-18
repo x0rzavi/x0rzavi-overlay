@@ -30,20 +30,20 @@ DEPEND="${RDEPEND}"
 BDEPEND="virtual/pkgconfig"
 
 CONFIG_CHECK="
-	ACPI_EC_DEBUGFS 
-	~HWMON 
+	ACPI_EC_DEBUGFS
+	~HWMON
 	X86_MSR
 "
 WARNING_HWMON="No hardware monitoring support detected!
 			   nbfc-linux can not function without temperature
 			   monitoring"
 
-PATCHES="${FILESDIR}/${P}-Makefile-Dont-strip.patch"
+PATCHES="${FILESDIR}/${PN}-Makefile-Dont-strip.patch"
 
 src_compile() {
 	if [[ ${PV} == 9999 ]]; then
 		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system orcdir=/etc/init.d DESTDIR="${D}"
-	else 
+	else
 		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}"
 	fi
 }
@@ -53,7 +53,7 @@ src_install() {
 		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system orcdir=/etc/init.d DESTDIR="${D}" install-c install-openrc
 	else
 		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install-c
-		newinitd "${FILESDIR}/nbfc_service.initd nbfc_service"
+		newinitd "${FILESDIR}/nbfc_service.initd" nbfc_service
 	fi
 	if ! use zsh-completion ; then rm -rf "${D}/usr/share/zsh" || die "Removing unnecessary completions failed!"; fi
 	if ! use bash-completion ; then rm -rf "${D}/usr/share/bash-completion" || die "Removing unnecessary completions failed!"; fi
@@ -65,7 +65,7 @@ pkg_postinst() {
 	elog "nbfc-linux requires to monitor temperature sensors."
 	elog "Ensure that there is proper support."
 	elog " "
-	elog "If you wish nbfc_service to get started on boot then," 
+	elog "If you wish nbfc_service to get started on boot then,"
 	elog "for systemd use 'sudo systemctl enable nbfc_service' or "
 	elog "for openrc use 'sudo rc-update add nbfc_service default' "
 }
