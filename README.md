@@ -6,7 +6,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 2. ```emaint sync -r x0rzavi```
 
 ## Maintained packages
-- [app-admin/ananicy-cpp](app-admin/ananicy-cpp)
+- [app-admin/ananicy-cpp](https://gitlab.com/ananicy-cpp/ananicy-cpp)
 - [app-misc/pfetch-rs](https://github.com/Gobidev/pfetch-rs)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
