@@ -38,7 +38,7 @@ WARNING_HWMON="No hardware monitoring support detected!
 			   nbfc-linux can not function without temperature
 			   monitoring"
 
-PATCHES="${FILESDIR}/${PN}-9999-Makefile-Dont-strip.patch"
+PATCHES="${FILESDIR}/${P}-Makefile-Dont-strip.patch"
 
 src_compile() {
 	if [[ ${PV} == 9999 ]]; then
