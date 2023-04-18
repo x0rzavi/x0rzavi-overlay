@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -19,7 +19,6 @@ fi
 
 LICENSE="GPL-3"
 SLOT="0"
-IUSE=""
 DOCS="CHANGELIST LICENSE README.md sanoid.conf"
 
 RDEPEND="dev-perl/Config-IniFiles
@@ -37,10 +36,10 @@ BDEPEND="virtual/pkgconfig"
 
 src_install () {
 	dobin sanoid syncoid findoid
-	insinto /etc/${PN}
+	insinto "/etc/${PN}"
 	doins sanoid.defaults.conf
 	insinto /etc/cron.d
-	newins "${FILESDIR}/${PN}.cron" ${PN}
+	newins "${FILESDIR}/${PN}.cron" "${PN}"
 	einstalldocs
 }
 
