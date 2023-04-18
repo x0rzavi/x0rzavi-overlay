@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -9,6 +9,7 @@ HOMEPAGE="https://github.com/mr-karan/doggo"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="zsh-completion fish-completion"
+
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -23,13 +24,13 @@ SRC_URI="https://github.com/mr-karan/${MY_PN}/releases/download/v${PV}/${MY_PN}_
 QA_PREBUILT="/usr/bin/${MY_PN}"
 
 src_unpack() {
-	mkdir -p ${S}
-	cd ${S}
-	unpack ${MY_P}.tar.gz
+	mkdir -p "${S}"
+	cd "${S}" || die
+	unpack "${MY_P}.tar.gz"
 }
 
 src_install() {
 	dobin ${MY_PN}
-	use zsh-completion && insinto /usr/share/zsh/site-functions/ && newins "${S}"/completions/"${MY_PN}.zsh" "_${MY_PN}"
-	use fish-completion && insinto /usr/share/fish/vendor_completions.d/ && doins "${S}"/completions/"${MY_PN}.fish"
+	use zsh-completion && insinto /usr/share/zsh/site-functions/ && newins "${S}/completions/${MY_PN}.zsh" "_${MY_PN}"
+	use fish-completion && insinto /usr/share/fish/vendor_completions.d/ && doins "${S}/completions/${MY_PN}.fish"
 }

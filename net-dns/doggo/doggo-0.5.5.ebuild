@@ -1,5 +1,5 @@
-# Copyright 1999-2022 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -11,6 +11,7 @@ HOMEPAGE="https://github.com/mr-karan/doggo"
 LICENSE="GPL-3"
 SLOT="0"
 IUSE="+pie zsh-completion fish-completion"
+
 KEYWORDS="~amd64"
 RESTRICT="mirror"
 
@@ -35,20 +36,20 @@ src_compile () {
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.buildVersion='${PV}' -X main.buildDate='${BUILD_DATE}'" \
-		-o ${PN} ./cmd/doggo/
+		-o "${PN}" ./cmd/doggo/
 	else
-		ego build -o ${PN} \
+		ego build -o "${PN}" \
 		-trimpath \
 		-mod=readonly \
 		-modcacherw \
 		-ldflags "-s -w -linkmode external -X main.buildVersion=${PV} -X main.buildDate=${BUILD_DATE}" \
-		${S}/cmd/doggo/
+		"${S}/cmd/doggo/"
 	fi
 }
 
 src_install() {
 	einstalldocs
-	dobin ${PN}
-	use zsh-completion && insinto /usr/share/zsh/site-functions/ && newins "${S}"/completions/"${PN}.zsh" "_${PN}"
-	use fish-completion && insinto /usr/share/fish/vendor_completions.d/ && doins "${S}"/completions/"${PN}.fish"
+	dobin "${PN}"
+	use zsh-completion && insinto /usr/share/zsh/site-functions/ && newins "${S}/completions/${PN}.zsh" "_${PN}"
+	use fish-completion && insinto /usr/share/fish/vendor_completions.d/ && doins "${S}/completions/${PN}.fish"
 }
