@@ -8,21 +8,12 @@ inherit meson toolchain-funcs
 DESCRIPTION="A dynamic tiling Wayland compositor that doesn't sacrifice on its looks"
 HOMEPAGE="https://github.com/hyprwm/Hyprland/releases"
 
-HYPRCOMMIT=25f14294a84df1a2a840a92fd89ff4e1fd72f01e
-PROTOCOMMIT=4d29e48433270a2af06b8bc711ca1fe5109746cd
-WLRCOMMIT=7abda952d0000b72d240fe1d41457b9288f0b6e5
 CONTRIBCOMMIT=1af47a008e850c595aeddc83bb3f04fd81935caa
-UDISCOMMIT=5336633af70f3917760a6d441ff02d93477b0c86
-SRC_URI="https://github.com/hyprwm/${PN^}/archive/${HYPRCOMMIT}.tar.gz -> ${PF}.tar.gz
-	https://github.com/hyprwm/hyprland-protocols/archive/${PROTOCOMMIT}.tar.gz \
-	-> hyprland-protocols-${PV}.tar.gz
+SRC_URI="https://github.com/hyprwm/${PN^}/releases/download/v${PV}/source-v${PV}.tar.gz -> ${PF}.gh.tar.gz
 	https://github.com/hyprwm/contrib/archive/${CONTRIBCOMMIT}.tar.gz \
 	-> contrib-${PV}.tar.gz
-	https://github.com/canihavesomecoffee/udis86/archive/${UDISCOMMIT}.tar.gz \
-	-> udis-${PV}.tar.gz
-	https://gitlab.freedesktop.org/wlroots/wlroots/-/archive/${WLRCOMMIT}/wlroots-${WLRCOMMIT}.tar.bz2 \
-	-> wlr-${PV}.tar.bz2"
-S="${WORKDIR}/${PN^}-${HYPRCOMMIT}"
+"
+S="${WORKDIR}/${PN}-source"
 
 KEYWORDS="~amd64"
 LICENSE="BSD"
@@ -33,13 +24,12 @@ RDEPEND="
 	app-misc/jq
 	dev-libs/libevdev
 	dev-libs/libinput
-	dev-libs/libliftoff
 	dev-libs/wayland
 	>=dev-libs/wayland-protocols-1.31
 	dev-util/glslang
 	dev-util/vulkan-headers
 	gui-libs/gtk-layer-shell
-	gui-libs/wlroots[X?]
+	>=gui-libs/wlroots-0.16.0[X?]
 	media-libs/libdisplay-info
 	media-libs/libglvnd[X?]
 	media-libs/mesa[gles2,wayland,X?]
@@ -68,22 +58,11 @@ RDEPEND="
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
+	dev-libs/hyprland-protocols
+	dev-libs/libliftoff
 	grimblast? ( app-text/scdoc )
 	shellevents? ( app-text/scdoc )
 "
-
-src_unpack() {
-	default
-
-	rmdir "${S}/subprojects/wlroots"
-	rmdir "${S}/subprojects/hyprland-protocols"
-	rmdir "${S}/subprojects/udis86"
-	mv "${WORKDIR}/wlroots-${WLRCOMMIT}" "${S}/subprojects/wlroots" || die
-	mv "${WORKDIR}/hyprland-protocols-${PROTOCOMMIT}" "${S}/subprojects/hyprland-protocols" || die
-	mv "${WORKDIR}/udis86-${UDISCOMMIT}" "${S}/subprojects/udis86" || die
-	# Workaround for https://github.com/hyprwm/Hyprland/issues/1207
-	cp "${S}/subprojects/hyprland-protocols/protocols/hyprland-toplevel-export-v1.xml" "${S}/protocols" || die
-}
 
 src_prepare() {
 	STDLIBVER=$(echo '#include <string>' | $(tc-getCXX) -x c++ -dM -E - | \
@@ -106,7 +85,7 @@ src_configure() {
 }
 
 src_install() {
-	meson_src_install --skip-subprojects
+	meson_src_install --skip-subprojects wlroots
 
 	use grimblast && emake PREFIX="${ED}/usr" -C "${WORKDIR}/contrib-${CONTRIBCOMMIT}/grimblast" install
 	use scratchpad && emake PREFIX="${ED}/usr" -C "${WORKDIR}/contrib-${CONTRIBCOMMIT}/scratchpad" install
