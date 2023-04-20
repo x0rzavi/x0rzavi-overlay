@@ -9,7 +9,7 @@ DESCRIPTION="xdg-desktop-portal backend for hyprland"
 HOMEPAGE="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
 
 if [[ ${PV} == 9999 ]]; then
-	EGIT_REPO_URI="https://github.com/hyprwm/xdg-desktop-portal-hyprland.git"
+	EGIT_REPO_URI="https://github.com/hyprwm/xdg-desktop-portal-hyprland"
 	inherit git-r3
 else
 	KEYWORDS="~amd64"
@@ -35,6 +35,7 @@ DEPEND="
 	dev-qt/qtwayland:6
 	dev-qt/qtwidgets
 	media-libs/mesa
+	sys-apps/util-linux
 	x11-libs/libdrm
 	|| (
 		systemd? ( >=sys-apps/systemd-237 )
@@ -51,12 +52,12 @@ BDEPEND="
 	virtual/pkgconfig
 "
 
-src_unpack() {
-	default
-
-	rmdir "${S}/subprojects/hyprland-protocols"
-	mv "${WORKDIR}/hyprland-protocols-${PROTOCOMMIT}" "${S}/subprojects/hyprland-protocols" || die
-}
+#src_unpack() {
+#	default
+#
+#	rmdir "${S}/subprojects/hyprland-protocols"
+#	mv "${WORKDIR}/hyprland-protocols-${PROTOCOMMIT}" "${S}/subprojects/hyprland-protocols" || die
+#}
 
 src_configure() {
 	local emasonargs=()

@@ -35,6 +35,7 @@ DEPEND="
 	dev-qt/qtwayland:6
 	dev-qt/qtwidgets
 	media-libs/mesa
+	sys-apps/util-linux
 	x11-libs/libdrm
 	|| (
 		systemd? ( >=sys-apps/systemd-237 )
