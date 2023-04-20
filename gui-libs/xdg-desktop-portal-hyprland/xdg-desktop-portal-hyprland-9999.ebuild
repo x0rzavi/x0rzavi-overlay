@@ -1,1 +1,0 @@
-xdg-desktop-portal-hyprland-0.1.0.ebuild
