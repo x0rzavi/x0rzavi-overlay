@@ -9,7 +9,6 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [app-admin/ananicy-cpp](https://gitlab.com/ananicy-cpp/ananicy-cpp)
 - [app-misc/pfetch-rs](https://github.com/Gobidev/pfetch-rs)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
-- [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
 - [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
 - [net-analyzer/gping-bin](https://github.com/orf/gping)
 - [net-dns/doggo-bin](https://github.com/mr-karan/doggo)
@@ -27,3 +26,4 @@ Gentoo overlay for my absolutely necessary utilities :P
 
 ## Deprecated in favour of official repos
 - [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
+- [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
