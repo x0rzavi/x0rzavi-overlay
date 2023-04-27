@@ -24,6 +24,10 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
 - [media-sound/mpd-mpris](https://github.com/natsukagami/mpd-mpris)
 
+## Packages to debug issues
+- [gui-wm/hyprland-9999](https://github.com/hyprwm/Hyprland)
+- [gui-apps/hyprland-contrib-9999](https://github.com/hyprwm/contrib)
+
 ## Deprecated in favour of official repos
 - [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
