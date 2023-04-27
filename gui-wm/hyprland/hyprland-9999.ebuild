@@ -1,5 +1,6 @@
 # Copyright 2023 Gentoo Authors
-# Distributed under the terms of the GNU General Public License v2
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
 
 EAPI=8
 
@@ -10,15 +11,11 @@ HOMEPAGE="https://github.com/hyprwm/Hyprland/releases"
 
 inherit git-r3
 EGIT_REPO_URI="https://github.com/hyprwm/${PN^}.git"
-#CONTRIBCOMMIT=1af47a008e850c595aeddc83bb3f04fd81935caa
-#SRC_URI="https://github.com/hyprwm/contrib/archive/${CONTRIBCOMMIT}.tar.gz -> contrib-${PV}.tar.gz"
-
-S="${WORKDIR}/${P}"
 
 KEYWORDS="~amd64"
 LICENSE="BSD"
 SLOT="0"
-IUSE="X grimblast legacy-renderer scratchpad shellevents systemd"
+IUSE="X legacy-renderer systemd contrib"
 
 RDEPEND="
 	app-misc/jq
@@ -29,7 +26,6 @@ RDEPEND="
 	dev-util/glslang
 	dev-util/vulkan-headers
 	gui-libs/gtk-layer-shell
-	>=gui-libs/wlroots-0.16.0[X?]
 	media-libs/libdisplay-info
 	media-libs/libglvnd[X?]
 	media-libs/mesa[gles2,wayland,X?]
@@ -41,12 +37,6 @@ RDEPEND="
 	x11-libs/pixman
 	x11-misc/xkeyboard-config
 	virtual/libudev
-	grimblast? (
-		 gui-apps/grim
-		 gui-apps/slurp
-		 gui-apps/wl-clipboard
-		 x11-libs/libnotify
-	)
 	X? (
 	   gui-libs/wlroots[x11-backend]
 	   x11-base/xwayland
@@ -55,13 +45,14 @@ RDEPEND="
 	   x11-libs/xcb-util-renderutil
 	   x11-libs/xcb-util-wm
 	)
+	contrib? ( gui-apps/hyprland-contrib )
 "
 DEPEND="${RDEPEND}"
 BDEPEND="
 	dev-libs/hyprland-protocols
 	dev-libs/libliftoff
-	grimblast? ( app-text/scdoc )
-	shellevents? ( app-text/scdoc )
+	dev-vcs/git
+	>=gui-libs/wlroots-0.16.0[X?]
 "
 
 src_prepare() {
@@ -86,8 +77,4 @@ src_configure() {
 
 src_install() {
 	meson_src_install --skip-subprojects wlroots
-
-	#use grimblast && emake PREFIX="${ED}/usr" -C "${WORKDIR}/contrib-${CONTRIBCOMMIT}/grimblast" install
-	#use scratchpad && emake PREFIX="${ED}/usr" -C "${WORKDIR}/contrib-${CONTRIBCOMMIT}/scratchpad" install
-	#use shellevents && emake PREFIX="${ED}/usr" -C "${WORKDIR}/contrib-${CONTRIBCOMMIT}/shellevents" install
 }
