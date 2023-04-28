@@ -25,6 +25,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [media-sound/mpd-mpris](https://github.com/natsukagami/mpd-mpris)
 
 ## Packages to debug issues
+- [gui-wm/swayfx-9999](https://github.com/WillPower3309/swayfx)
 - [gui-wm/hyprland-9999](https://github.com/hyprwm/Hyprland)
 - [gui-apps/hyprland-contrib-9999](https://github.com/hyprwm/contrib)
 
