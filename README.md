@@ -1,9 +1,9 @@
 # x0rzavi-overlay
 Gentoo overlay for my absolutely necessary utilities :P
 
-## Add overlay
-1. ```eselect repository add x0rzavi git https://github.com/x0rzavi/x0rzavi-overlay.git```
-2. ```emaint sync -r x0rzavi```
+## Enable overlay
+1. ```eselect repository enable x0rzavi```
+2. ```emaint sync --repo x0rzavi```
 
 ## Maintained packages
 - [app-admin/ananicy-cpp](https://gitlab.com/ananicy-cpp/ananicy-cpp)
