@@ -14,6 +14,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [net-dns/doggo-bin](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
 - [net-misc/wgcf](https://github.com/ViRb3/wgcf)
+- [net-p2p/qbittorrent-enhanced](https://github.com/c0re100/qBittorrent-Enhanced-Edition)
 - [sys-fs/sanoid](https://github.com/jimsalterjrs/sanoid)
 - [sys-fs/zrepl](https://github.com/zrepl/zrepl)
 - [sys-kernel/cachyos-sources](https://github.com/CachyOS/kernel-patches)
