@@ -7,6 +7,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 
 ## Maintained packages
 - [app-admin/ananicy-cpp](https://gitlab.com/ananicy-cpp/ananicy-cpp)
+- [app-emulation/quickemu](https://github.com/quickemu-project/quickemu)
 - [app-misc/pfetch-rs](https://github.com/Gobidev/pfetch-rs)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
