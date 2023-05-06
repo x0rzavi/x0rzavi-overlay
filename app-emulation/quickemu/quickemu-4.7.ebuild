@@ -5,7 +5,7 @@
 EAPI=8
 
 PYTHON_COMPAT=( python3_11 )
-inherit python-single-r1 optfeature
+inherit python-single-r1
 
 DESCRIPTION="Quickly create and run optimised Windows, macOS and Linux desktop virtual machines"
 HOMEPAGE="https://github.com/quickemu-project/quickemu"
@@ -19,7 +19,7 @@ DOCS="README.md LICENSE"
 
 DEPEND="
 	${PYTHON_DEPS}
-	>=app-emulation/qemu-6.0.0[gtk,sdl,spice,smartcard]
+	>=app-emulation/qemu-6.0.0[gtk,sdl,spice,smartcard,usbredir,virtfs]
 	>=app-shells/bash-4.0:=
 	sys-apps/coreutils
 	|| (
@@ -35,7 +35,8 @@ DEPEND="
 	sys-apps/util-linux
 	sys-apps/sed
 	net-misc/socat
-	net-misc/spice-gtk[gtk3,smartcard]
+	app-emulation/spice[smartcard]
+	net-misc/spice-gtk[gtk3,smartcard,usbredir]
 	app-crypt/swtpm
 	net-misc/wget
 	x11-misc/xdg-user-dirs
@@ -56,5 +57,6 @@ src_install () {
 }
 
 pkg_postinst () {
-	optfeature "Faster downloads" net-misc/aria2
+	elog "Install additional packages for optional runtime features:"
+	elog "	net-misc/aria2 for Faster downloads"
 }
