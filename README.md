@@ -10,7 +10,6 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [app-emulation/quickemu](https://github.com/quickemu-project/quickemu)
 - [app-misc/pfetch-rs](https://github.com/Gobidev/pfetch-rs)
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
-- [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
 - [net-analyzer/gping-bin](https://github.com/orf/gping)
 - [net-dns/doggo-bin](https://github.com/mr-karan/doggo)
 - [net-dns/nextdns](https://github.com/nextdns/nextdns)
@@ -32,5 +31,6 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [gui-apps/hyprland-contrib-9999](https://github.com/hyprwm/contrib)
 
 ## Deprecated in favour of official repos
+- [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
 - [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)

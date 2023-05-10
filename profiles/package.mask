@@ -1,0 +1,4 @@
+# Deprecated in favour of official repos
+gui-apps/nwg-look
+gui-libs/xdg-desktop-portal-hyprland
+gui-apps/hyprpaper
