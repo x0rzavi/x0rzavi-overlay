@@ -20,6 +20,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [sys-kernel/cachyos-sources](https://github.com/CachyOS/kernel-patches)
 - [sys-kernel/zenpower3](https://git.exozy.me/Ta180m/zenpower3)
 - [sys-power/nbfc-linux](https://github.com/nbfc-linux/nbfc-linux)
+- [www-client/carbonyl-bin](https://github.com/fathyb/carbonyl)
 
 ## Proxy maintained packages
 - [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
