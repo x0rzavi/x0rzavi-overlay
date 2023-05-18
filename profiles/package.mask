@@ -2,3 +2,6 @@
 gui-apps/nwg-look
 gui-libs/xdg-desktop-portal-hyprland
 gui-apps/hyprpaper
+gui-wm/swayfx
+gui-wm/hyprland
+gui-apps/hyprland-contrib
