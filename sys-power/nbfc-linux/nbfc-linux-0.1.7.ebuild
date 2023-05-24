@@ -50,7 +50,7 @@ src_compile() {
 
 src_install() {
 	if [[ ${PV} == 9999 ]]; then
-		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system orcdir=/etc/init.d DESTDIR="${D}" install-c install-openrc
+		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system orcdir=/etc/init.d DESTDIR="${D}" install install-openrc
 	else
 		emake PREFIX=/usr confdir=/etc sysddir=/lib/systemd/system DESTDIR="${D}" install-c
 		newinitd "${FILESDIR}/nbfc_service.initd" nbfc_service
