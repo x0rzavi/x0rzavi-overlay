@@ -1,0 +1,177 @@
+# Copyright 2023 Avishek Sen
+# Distributed under the terms of the GNU General Public License v3
+
+EAPI=8
+
+CRATES="
+	aho-corasick-0.7.20
+	aho-corasick-1.0.1
+	android_system_properties-0.1.5
+	autocfg-1.1.0
+	bitflags-1.3.2
+	block-0.1.6
+	bstr-1.5.0
+	bumpalo-3.12.2
+	byteorder-1.4.3
+	cc-1.0.79
+	cfg-if-0.1.10
+	cfg-if-1.0.0
+	chrono-0.4.24
+	cocoa-0.20.2
+	core-foundation-0.7.0
+	core-foundation-0.9.3
+	core-foundation-sys-0.7.0
+	core-foundation-sys-0.8.4
+	core-graphics-0.19.2
+	core-graphics-0.22.3
+	core-graphics-types-0.1.1
+	core-video-sys-0.1.4
+	crossterm-0.26.1
+	crossterm_winapi-0.9.0
+	dirs-4.0.0
+	dirs-sys-0.3.7
+	dotenvy-0.15.7
+	either-1.8.1
+	fnv-1.0.7
+	foreign-types-0.3.2
+	foreign-types-shared-0.1.1
+	futures-0.3.28
+	futures-channel-0.3.28
+	futures-core-0.3.28
+	futures-executor-0.3.28
+	futures-io-0.3.28
+	futures-macro-0.3.28
+	futures-sink-0.3.28
+	futures-task-0.3.28
+	futures-util-0.3.28
+	gethostname-0.2.3
+	getrandom-0.2.9
+	glob-0.3.1
+	globset-0.4.10
+	hermit-abi-0.2.6
+	home-0.5.5
+	iana-time-zone-0.1.56
+	iana-time-zone-haiku-0.1.2
+	if-addrs-0.6.7
+	if-addrs-sys-0.3.2
+	itertools-0.10.5
+	js-sys-0.3.63
+	lazy_static-1.4.0
+	libc-0.2.144
+	libloading-0.8.0
+	libmacchina-7.1.0
+	local-ip-address-0.4.9
+	lock_api-0.4.9
+	log-0.4.17
+	mach2-0.4.1
+	malloc_buf-0.0.6
+	memchr-2.5.0
+	memoffset-0.6.5
+	metal-0.18.0
+	mio-0.8.6
+	neli-0.5.3
+	nix-0.24.3
+	num-integer-0.1.45
+	num-traits-0.2.15
+	num_cpus-1.15.0
+	objc-0.2.7
+	objc_exception-0.1.2
+	once_cell-1.17.1
+	os-release-0.1.0
+	parking_lot-0.12.1
+	parking_lot_core-0.9.7
+	pciid-parser-0.6.2
+	pin-project-lite-0.2.9
+	pin-utils-0.1.0
+	pkg-config-0.3.27
+	proc-macro2-1.0.58
+	quote-1.0.27
+	redox_syscall-0.2.16
+	redox_users-0.4.3
+	regex-1.8.1
+	regex-syntax-0.7.1
+	rpm-pkg-count-0.2.1
+	same-file-1.0.6
+	scopeguard-1.1.0
+	serde-1.0.163
+	serde_derive-1.0.163
+	signal-hook-0.3.15
+	signal-hook-mio-0.2.3
+	signal-hook-registry-1.4.1
+	slab-0.4.8
+	smallvec-1.10.0
+	sqlite-0.27.3
+	sqlite3-src-0.4.0
+	sqlite3-sys-0.14.0
+	syn-1.0.109
+	syn-2.0.16
+	sysctl-0.4.6
+	thiserror-1.0.40
+	thiserror-impl-1.0.40
+	tracing-0.1.37
+	tracing-attributes-0.1.24
+	tracing-core-0.1.31
+	unicode-ident-1.0.8
+	walkdir-2.3.3
+	wasi-0.11.0+wasi-snapshot-preview1
+	wasm-bindgen-0.2.86
+	wasm-bindgen-backend-0.2.86
+	wasm-bindgen-macro-0.2.86
+	wasm-bindgen-macro-support-0.2.86
+	wasm-bindgen-shared-0.2.86
+	which-4.4.0
+	winapi-0.3.9
+	winapi-i686-pc-windows-gnu-0.4.0
+	winapi-util-0.1.5
+	winapi-wsapoll-0.1.1
+	winapi-x86_64-pc-windows-gnu-0.4.0
+	windows-0.39.0
+	windows-0.48.0
+	windows-implement-0.48.0
+	windows-interface-0.48.0
+	windows-sys-0.42.0
+	windows-sys-0.45.0
+	windows-sys-0.48.0
+	windows-targets-0.42.2
+	windows-targets-0.48.0
+	windows_aarch64_gnullvm-0.42.2
+	windows_aarch64_gnullvm-0.48.0
+	windows_aarch64_msvc-0.39.0
+	windows_aarch64_msvc-0.42.2
+	windows_aarch64_msvc-0.48.0
+	windows_i686_gnu-0.39.0
+	windows_i686_gnu-0.42.2
+	windows_i686_gnu-0.48.0
+	windows_i686_msvc-0.39.0
+	windows_i686_msvc-0.42.2
+	windows_i686_msvc-0.48.0
+	windows_x86_64_gnu-0.39.0
+	windows_x86_64_gnu-0.42.2
+	windows_x86_64_gnu-0.48.0
+	windows_x86_64_gnullvm-0.42.2
+	windows_x86_64_gnullvm-0.48.0
+	windows_x86_64_msvc-0.39.0
+	windows_x86_64_msvc-0.42.2
+	windows_x86_64_msvc-0.48.0
+	winreg-0.10.1
+	wmi-0.12.2
+	x11rb-0.10.1
+	x11rb-protocol-0.10.0
+"
+
+inherit cargo
+
+DESCRIPTION="A rewrite of the pfetch system information tool"
+HOMEPAGE="https://github.com/Gobidev/pfetch-rs"
+SRC_URI="$(cargo_crate_uris)
+		https://github.com/Gobidev/${PN}/archive/refs/tags/v${PV}.tar.gz -> ${P}.tar.gz"
+
+LICENSE="Apache-2.0 Apache-2.0-with-LLVM-exceptions BSD BSD-2 GPL-3 ISC MIT Unicode-DFS-2016 Unlicense"
+SLOT="0"
+KEYWORDS="~amd64"
+
+DEPEND=""
+RDEPEND="${DEPEND}"
+BDEPEND=""
+
+QA_PRESTRIPPED="usr/bin/pfetch"
