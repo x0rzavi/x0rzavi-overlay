@@ -12,7 +12,7 @@
 		<flag name="cpusched_bore">Enable 'Burst-Oriented Response Enhancer'</flag>
 		<flag name="cpusched_cfs">Enable 'Completely Fair Scheduler'</flag>
 		<flag name="cpusched_tt">Enable 'Task Type Scheduler by Hamad Marri'</flag>
-		<flag name="cpusched_eevdf">Enable EEVDF Scheduler with some CachyOS Optimizations. EEVDF brings latency-nice as default</flag>
+		<flag name="cpusched_cachyos">Enable EEVDF + BORE Scheduler with some CachyOS Optimizations. EEVDF brings latency-nice as default</flag>
 		<flag name="tune_bore">Apply some suggested sysctl values from the bore developer</flag>
 		<flag name="NUMAdisable">Disable NUMA. NUMA is optimized for multi-socket motherboards</flag>
 		<flag name="cc_harder">Enable KBUILD_CFLAGS -O3</flag>
@@ -36,17 +36,18 @@
 		<flag name="lru_standard">Enable multigenerational LRU</flag>
 		<flag name="lru_stats">Enable multigenerational LRU with stats</flag>
 		<flag name="lru_none">Disable multigenerational LRU</flag>
+		<flag name="vma_standard">Enable per-VMA locking</flag>
+		<flag name="vma_stats">Enable per-VMA locking with stats</flag>
+		<flag name="vma_none">Disable per-VMA locking</flag>
 		<flag name="hugepage_always">Always enable Transparent Hugepages</flag>
 		<flag name="hugepage_madvise">Prevent applications from allocating more memory resources than necessary</flag>
 		<flag name="damon">Enable DAMON</flag>
 		<flag name="lrng">Enable Linux Random Number Generator</flag>
 		<flag name="auto_optimization">Use auto CPU optimizations</flag>
 		<flag name="disable_debug">Disable debug to lower the size of the kernel</flag>
-		<flag name="zstd_compression">Enable zram/zswap ZSTD compression</flag>
 		<flag name="zstdlevel_ultra">Set highest ZSTD compression ratio. Ultra settings can sometimes be counterproductive in both size and speed.</flag>
 		<flag name="zstdlevel_normal">Set standard ZSTD compression ratio</flag>
 		<flag name="bcachefs">Enable bcachefs</flag>
-		<flag name="latency_nice">Enable latency-nice patchset</flag>
 	</use>
 	<upstream>
 		<remote-id type="github">CachyOS/linux-cachyos</remote-id>
