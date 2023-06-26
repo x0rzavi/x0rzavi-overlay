@@ -25,6 +25,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 ## Proxy maintained packages
 - [app-containers/aardvark-dns](https://github.com/containers/aardvark-dns)
 - [media-sound/mpd-mpris](https://github.com/natsukagami/mpd-mpris)
+- [sys-boot/zfsbootmenu](https://github.com/zbm-dev/zfsbootmenu)
 
 ## Packages to debug issues
 - [gui-wm/swayfx-9999](https://github.com/WillPower3309/swayfx)
