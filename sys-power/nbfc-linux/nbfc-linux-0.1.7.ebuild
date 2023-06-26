@@ -11,7 +11,7 @@ HOMEPAGE="https://github.com/nbfc-linux/nbfc-linux"
 if [[ ${PV} == 9999 ]]; then
 	inherit git-r3
 	# EGIT_BRANCH="main"
-	EGIT_BRANCH="openrc"
+	EGIT_BRANCH="gentoo"
 	EGIT_CLONE_TYPE="shallow"
 	# EGIT_REPO_URI="https://github.com/nbfc-linux/${PN}.git"
 	EGIT_REPO_URI="https://github.com/x0rzavi/${PN}.git"
@@ -38,7 +38,9 @@ WARNING_HWMON="No hardware monitoring support detected!
 			   nbfc-linux can not function without temperature
 			   monitoring"
 
-PATCHES="${FILESDIR}/${PN}-Makefile-Dont-strip.patch"
+QA_PRESTRIPPED="/usr/bin/nbfc_service
+			/usr/bin/nbfc
+			/usr/bin/ec_probe"
 
 src_compile() {
 	if [[ ${PV} == 9999 ]]; then
