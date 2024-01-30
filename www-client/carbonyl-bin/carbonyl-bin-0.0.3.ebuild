@@ -9,16 +9,24 @@ HOMEPAGE="https://github.com/fathyb/carbonyl"
 LICENSE="BSD"
 SLOT="0"
 
-KEYWORDS="~amd64"
+KEYWORDS="~amd64 ~arm64"
 RESTRICT="mirror"
 
 MY_PN="carbonyl"
 MY_P="${MY_PN}-${PV}"
 
 RDEPEND=""
-DEPEND="${RDEPEND}"
+DEPEND="${RDEPEND}
+	dev-libs/expat
+	dev-libs/nss
+	media-libs/alsa-lib"
 BDEPEND=""
-SRC_URI="https://github.com/fathyb/${MY_PN}/releases/download/v${PV}/${MY_PN}.linux-amd64.zip -> ${MY_P}.zip"
+
+BASE_URI="https://github.com/fathyb/${MY_PN}/releases/download/v${PV}/${MY_PN}.linux-"
+SRC_URI="
+	amd64? ( ${BASE_URI}amd64.zip -> ${MY_PN}-amd64-${PV}.zip )
+	arm64? ( ${BASE_URI}arm64.zip -> ${MY_PN}-arm64-${PV}.zip )
+"
 
 QA_PREBUILT="/opt/${MY_P}/${MY_PN}"
 QA_PRESTRIPPED="/opt/${MY_P}/libEGL.so
@@ -29,7 +37,7 @@ QA_PRESTRIPPED="/opt/${MY_P}/libEGL.so
 src_unpack() {
 	mkdir -p "${S}"
 	cd "${S}" || die
-	unpack "${MY_P}.zip"
+	unpack "${MY_PN}-${ARCH}-${PV}.zip"
 }
 
 src_install() {
