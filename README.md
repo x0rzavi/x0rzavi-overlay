@@ -33,7 +33,7 @@ Gentoo overlay for my absolutely necessary utilities :P
 - [gui-apps/cliphist](https://github.com/sentriz/cliphist)
 - [gui-apps/hyprpaper](https://github.com/hyprwm/hyprpaper)
 - [gui-apps/nwg-look](https://github.com/nwg-piotr/nwg-look)
-- [gui-libs/xdg-desktop-portal-hyprland](https://github.com/hyprwm/xdg-desktop-portal-hyprland)
 - [media-sound/mpd-mpris](https://github.com/natsukagami/mpd-mpris)
+- [net-fs/samba](https://samba.org/)
 - [sys-boot/zfsbootmenu](https://github.com/zbm-dev/zfsbootmenu)
 - [sys-kernel/cachyos-sources](https://github.com/CachyOS/kernel-patches)
