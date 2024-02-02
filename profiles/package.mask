@@ -1,7 +1,13 @@
 # Deprecated in favour of official repos
+app-containers/aardvark-dns
+app-emulation/quickemu
+gui-apps/cliphist
+gui-apps/hyprland-contrib
+gui-apps/hyprpaper
 gui-apps/nwg-look
 gui-libs/xdg-desktop-portal-hyprland
-gui-apps/hyprpaper
-gui-wm/swayfx
 gui-wm/hyprland
-gui-apps/hyprland-contrib
+gui-wm/swayfx
+media-sound/mpd-mpris
+sys-boot/zfsbootmenu
+sys-kernel/cachyos-sources
